@@ -1,41 +1,111 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tengo (Tempat Ngopi) - Daftar Coffee Shop</title>
+        <title>Tengo | Tempat Ngopi</title>
         <!-- Link ke Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <!-- Link ke Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
         <!-- Style khusus untuk mengatur tampilan halaman -->
         <style>
             body {
                 padding: 20px;
+                font-family: "Poppins", sans-serif;
+                background-color: #111;
             }
+
+            h1 {
+                color: white;
+            }
+
+            /* Mengatur jarak antara teks pada card */
+            .coffee-card .card-body p {
+                margin-bottom: 5px;
+            }
+
+            /* Mengatur margin untuk mengisi ruang di dalam card */
             .coffee-card {
+                margin: 10px;
                 margin-bottom: 20px;
+            }
+
+            /* Mengatur teks pada card */
+            .coffee-card .card-body {
+                padding: 10px;
+            }
+
+            /* Mengatur lebar gambar pada card agar tidak terlalu besar */
+            .coffee-card .card-img-top {
+                max-width: 100%;
+                height: 200px; /* Ubah nilai tinggi gambar sesuai kebutuhan */
+                object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan ukuran kontainer */
+            }
+
+            /* Mengatur ukuran dan jarak pada judul coffee shop */
+            .coffee-card .card-title {
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 10px;
+                border-bottom: 1px solid #ccc; /* Membuat garis bawah pada judul */
+                padding-bottom: 5px;
+            }
+
+            /* Mengatur style untuk informasi di dalam card */
+            .coffee-card .card-text {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            /* Mengatur style untuk ulasan di dalam card */
+            .coffee-card .card-text:last-child {
+                margin-bottom: 10px;
+            }
+
+            /* Mengatur tinggi card agar tinggi seluruhnya sama */
+            .coffee-card .card {
+                height: 100%;
+                cursor: pointer; /* Menampilkan kursor tangan (pointer) saat mengarahkan ke card */
+            }
+
+            /* Mengatur tampilan container agar rapi */
+            .container {
+                padding: 20px;
+            }
+
+            /* Mengatur jarak antar card pada tampilan desktop */
+            @media (min-width: 992px) {
+                .row {
+                    margin-left: -10px;
+                    margin-right: -10px;
+                }
+                .coffee-card {
+                    padding: 0 10px;
+                }
             }
         </style>
     </head>
     <body>
         {% include 'navbar.html' %}
         <div class="container">
-            <h1 class="my-4">Tengo (Tempat Ngopi) - Daftar Coffee Shop</h1>
+            <h1 class="my-4">Tengo - Daftar Coffee Shop</h1>
             <form method="POST" enctype="multipart/form-data">
                 <!-- Tambahkan enctype di sini -->
                 <div class="row">
                     {% for coffee_shop in coffee_shops %}
                     <div class="col-md-4">
                         <div class="card coffee-card">
-                            <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
+                            <a href="{% url 'detail_coffeeshop' coffee_shop.id %}">
+                                <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ coffee_shop.nama }}</h5>
-                                <p class="card-text">Alamat: {{ coffee_shop.alamat }}</p>
-                                <p class="card-text">Jam Buka: {{ coffee_shop.jam_buka }}</p>
-                                <p class="card-text">Contact: {{ coffee_shop.contact }}</p>
-                                <p class="card-text">Review: {{ coffee_shop.review }}</p>
+                                <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
+                                <p class="card-text"><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
+                                <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
+                                <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
                             </div>
                         </div>
                     </div>

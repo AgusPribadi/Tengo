@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tengo (Tempat Ngopi) - Detail Coffee Shop</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <style>
+            body {
+                padding: 20px;
+            }
+            .coffee-detail {
+                margin-top: 20px;
+                padding: 20px;
+                border: 1px solid #ccc;
+            }
+            .coffee-img {
+                max-width: 100%;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="container">
+            <h1 class="my-4">Tengo (Tempat Ngopi) - Detail Coffee Shop</h1>
+            <div class="coffee-detail">
+                <img src="{{ coffee_shop.gallery.url }}" class="coffee-img" alt="{{ coffee_shop.nama }}" width="350px" height="250px" />
+                <h2>{{ coffee_shop.nama }}</h2>
+                <p><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
+                <p><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
+                <p><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
+                <p><strong>Review:</strong> {{ coffee_shop.review }}</p>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

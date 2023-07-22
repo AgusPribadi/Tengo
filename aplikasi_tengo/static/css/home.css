@@ -1,14 +1,24 @@
+body {
+    background-color: #ff0000; /* Kode warna merah (#ff0000) */
+}
 /* aplikasi_tengo/static/css/home.css */
 
 /* Mengatur margin untuk mengisi ruang di dalam card */
 .coffee-card {
     margin: 10px;
+    margin-bottom: 20px;
+}
+
+/* Mengatur teks pada card */
+.coffee-card .card-body {
+    padding: 10px;
 }
 
 /* Mengatur lebar gambar pada card agar tidak terlalu besar */
 .coffee-card .card-img-top {
     max-width: 100%;
-    height: auto;
+    height: 200px; /* Ubah nilai tinggi gambar sesuai kebutuhan */
+    object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan ukuran kontainer */
 }
 
 /* Mengatur ukuran dan jarak pada judul coffee shop */
@@ -16,6 +26,8 @@
     font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
+    border-bottom: 1px solid #ccc; /* Membuat garis bawah pada judul */
+    padding-bottom: 5px;
 }
 
 /* Mengatur style untuk informasi di dalam card */
@@ -27,12 +39,6 @@
 /* Mengatur style untuk ulasan di dalam card */
 .coffee-card .card-text:last-child {
     margin-bottom: 10px;
-}
-
-/* Membuat garis bawah pada judul coffee shop */
-.coffee-card .card-title {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
 }
 
 /* Mengatur tinggi card agar tinggi seluruhnya sama */

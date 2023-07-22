@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import CoffeeShop
 
 def index(request):
@@ -7,3 +7,7 @@ def index(request):
 def home(request):
     coffee_shops = CoffeeShop.objects.all()
     return render(request, 'home.html', {'coffee_shops': coffee_shops})
+
+def detail_coffeeshop(request, coffee_shop_id):
+    coffee_shop = get_object_or_404(CoffeeShop, pk=coffee_shop_id)
+    return render(request, 'detail_coffeeshop.html', {'coffee_shop': coffee_shop})
