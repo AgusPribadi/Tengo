@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tengo (Tempat Ngopi) - Daftar Coffee Shop</title>
+        <!-- Link ke Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <!-- Style khusus untuk mengatur tampilan halaman -->
+        <style>
+            body {
+                padding: 20px;
+            }
+            .coffee-card {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="container">
+            <h1 class="my-4">Tengo (Tempat Ngopi) - Daftar Coffee Shop</h1>
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Tambahkan enctype di sini -->
+                <div class="row">
+                    {% for coffee_shop in coffee_shops %}
+                    <div class="col-md-4">
+                        <div class="card coffee-card">
+                            <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ coffee_shop.nama }}</h5>
+                                <p class="card-text">Alamat: {{ coffee_shop.alamat }}</p>
+                                <p class="card-text">Jam Buka: {{ coffee_shop.jam_buka }}</p>
+                                <p class="card-text">Contact: {{ coffee_shop.contact }}</p>
+                                <p class="card-text">Review: {{ coffee_shop.review }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </form>
+            <!-- Tutup elemen form -->
+        </div>
+
+        <!-- Link ke Bootstrap JavaScript dan jQuery (opsional jika Anda ingin menggunakan fitur-fitur interaktif Bootstrap) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

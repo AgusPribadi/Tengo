@@ -1,0 +1,221 @@
+/* index.css */
+
+/* Reset CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    line-height: 1.6;
+    color: #333;
+    font-weight: 400; /* Set ke font-weight: 400 (normal) */
+}
+
+/* Global Styles */
+header {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+nav {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.nav-links li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.hero {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700; /* Set ke font-weight: 700 (bold) */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.cta-btn {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    font-weight: 700; /* Set ke font-weight: 700 (bold) */
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #ff5722;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #ff784e;
+    transform: scale(1.05);
+}
+
+/* Features Section */
+.features {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    text-align: center;
+    padding: 3rem 0;
+    background-color: #f9f9f9;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 700; /* Set ke font-weight: 700 (bold) */
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.feature-card img {
+    width: 150px;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card img:hover {
+    opacity: 1;
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700; /* Set ke font-weight: 700 (bold) */
+}
+
+.feature-card p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* About Section */
+.about {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    text-align: center;
+    padding: 3rem 0;
+    background-color: #f5f5f5;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 700; /* Set ke font-weight: 700 (bold) */
+}
+
+.about-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Contact Section */
+.contact {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 700; /* Set ke font-weight: 700 (bold) */
+}
+
+.contact form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contact form button {
+    padding: 1rem 2rem;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact form button:hover {
+    background-color: #ff784e;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    font-family: "Montserrat", Arial, sans-serif; /* Menggunakan font Montserrat */
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: #fff;
+}
+
+footer p {
+    margin: 0;
+}
