@@ -1,14 +1,14 @@
 /* CSS for the entire body */
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #000000;
+    background-color: #111; /* Set the background color to #111 */
     color: #fff; /* Set the text color to white */
 }
 
 /* CSS for the video element */
 video {
-    width: 420px; /* Set the desired width */
-    height: 380px; /* Set the desired height */
+    width: 520px; /* Set the desired width */
+    height: 412px; /* Set the desired height */
     display: block;
     margin: 0 auto;
     border-radius: 10px; /* Set the border radius to make the video look like a square */
@@ -54,4 +54,19 @@ video::-webkit-media-controls {
 /* Style for the row */
 .row {
     margin: 0 -10px;
+}
+
+.video-source {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    video {
+        width: 100%; /* Set the video width to 100% of its container on mobile devices */
+        height: auto; /* Allow the video to maintain its aspect ratio */
+        margin-top: 20px; /* Add spacing between the card and video on mobile devices */
+    }
 }
