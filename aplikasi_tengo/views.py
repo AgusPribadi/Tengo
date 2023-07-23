@@ -9,5 +9,8 @@ def home(request):
     return render(request, 'home.html', {'coffee_shops': coffee_shops})
 
 def detail_coffeeshop(request, coffee_shop_id):
-    coffee_shop = get_object_or_404(CoffeeShop, pk=coffee_shop_id)
-    return render(request, 'detail_coffeeshop.html', {'coffee_shop': coffee_shop})
+    coffee_shop = get_object_or_404(CoffeeShop, id=coffee_shop_id)
+    context = {
+        'coffee_shop': coffee_shop,
+    }
+    return render(request, 'detail_coffeeshop.html', context)

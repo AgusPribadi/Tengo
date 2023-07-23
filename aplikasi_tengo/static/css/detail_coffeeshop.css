@@ -1,0 +1,57 @@
+/* CSS for the entire body */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #000000;
+    color: #fff; /* Set the text color to white */
+}
+
+/* CSS for the video element */
+video {
+    width: 420px; /* Set the desired width */
+    height: 380px; /* Set the desired height */
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px; /* Set the border radius to make the video look like a square */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+/* Hide the video controls */
+video::-webkit-media-controls {
+    display: none;
+}
+
+/* Style for the card */
+.coffee-card {
+    color: #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+.coffee-card .card-img-top {
+    border-radius: 10px 10px 0 0; /* Rounded top corners for the card image */
+}
+
+.coffee-card .card-body {
+    padding: 10px;
+}
+
+.coffee-card .card-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.coffee-card .card-text {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Style for the entire container */
+.container {
+    padding: 20px;
+}
+
+/* Style for the row */
+.row {
+    margin: 0 -10px;
+}
