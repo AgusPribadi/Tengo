@@ -5,8 +5,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tengo (Tempat Ngopi) - Detail Coffee Shop</title>
+        <!-- di dalam <head> tag -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <!-- Font Awesome CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            integrity="sha512-d9hnnRRjBZqb30zq6NIXDz+M1lyfXcvRdMzh41LUQytU0bjb9daYuhTswd0a+MI3pGk1RBBYhU1O+bzFO3LDA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
         <link rel="stylesheet" href="{% static 'css/detail_coffeeshop.css' %}" />
     </head>
     <body>
@@ -23,6 +34,13 @@
                             <p class="card-text"><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
                             <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
                             <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
+                            {% if coffee_shop.instagram_url %}
+                            <div class="instagram-container">
+                                <a href="{{ coffee_shop.instagram_url }}" target="_blank" class="instagram-icon">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

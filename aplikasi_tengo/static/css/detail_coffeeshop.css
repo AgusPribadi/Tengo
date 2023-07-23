@@ -56,10 +56,18 @@ video::-webkit-media-controls {
     margin: 0 -10px;
 }
 
+/* Style for the video source text */
 .video-source {
     font-size: 14px;
     color: #999;
     text-align: center;
+}
+
+.social-icon {
+    width: 20px; /* Set the desired width for the Instagram icon */
+    height: 20px; /* Set the desired height for the Instagram icon */
+    margin-right: 10px; /* Add spacing between the icon and the text */
+    fill: #ff5722; /* Set the color for the Instagram icon */
 }
 
 /* Media query for mobile devices */
@@ -68,5 +76,10 @@ video::-webkit-media-controls {
         width: 100%; /* Set the video width to 100% of its container on mobile devices */
         height: auto; /* Allow the video to maintain its aspect ratio */
         margin-top: 20px; /* Add spacing between the card and video on mobile devices */
+    }
+
+    .social-icon {
+        width: 20px;
+        height: 20px;
     }
 }
