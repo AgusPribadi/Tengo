@@ -10,6 +10,7 @@ class CoffeeShop(models.Model):
     video = models.FileField(upload_to='coffeeshop_videos', blank=True, null=True)
     video_source = models.CharField(max_length=200, blank=True, null=True)
     instagram_url = models.URLField(max_length=200, null=True, blank=True)
+    google_maps_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.nama

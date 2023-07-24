@@ -55,6 +55,12 @@
                     {% endif %}
                     <!-- End of Video section -->
                 </div>
+                <!-- Blok konten peta -->
+                <div class="col-md-8">
+                    {% if coffee_shop.google_maps_url %}
+                    <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Menuju Kesana via Gmaps</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
