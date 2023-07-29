@@ -23,6 +23,11 @@
     border-radius: 5px;
 }
 
+/* Menambahkan border radius pada navbar */
+.navbar {
+    border-radius: 12px;
+}
+
 /* Menyembunyikan navbar-toggler pada layar besar */
 @media (min-width: 992px) {
     .navbar-toggler {
