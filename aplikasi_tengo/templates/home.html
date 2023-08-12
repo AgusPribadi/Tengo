@@ -91,28 +91,37 @@
         {% include 'navbar.html' %}
         <div class="container">
             <h1 class="my-4">Tengo - Daftar Coffee Shop</h1>
-            <form method="POST" enctype="multipart/form-data">
-                <!-- Tambahkan enctype di sini -->
-                <div class="row">
-                    {% for coffee_shop in coffee_shops %}
-                    <div class="col-md-4">
-                        <div class="card coffee-card">
-                            <a href="{% url 'detail_coffeeshop' coffee_shop.id %}">
-                                <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ coffee_shop.nama }}</h5>
-                                <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
-                                <p class="card-text"><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
-                                <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
-                                <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
-                            </div>
-                        </div>
+            <form method="GET" enctype="multipart/form-data">
+                <!-- Form pencarian -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari coffee shop..." name="q" value="{{ request.GET.q }}" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Cari</button>
                     </div>
-                    {% endfor %}
                 </div>
             </form>
-            <!-- Tutup elemen form -->
+            {% if coffee_shops %}
+            <div class="row">
+                {% for coffee_shop in coffee_shops %}
+                <div class="col-md-4">
+                    <div class="card coffee-card">
+                        <a href="{% url 'detail_coffeeshop' coffee_shop.id %}">
+                            <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ coffee_shop.nama }}</h5>
+                            <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
+                            <p class="card-text"><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
+                            <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
+                            <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="alert alert-info">Duh sepertinya coffee shop yang kamu cari belum terinput 😥</div>
+            {% endif %}
         </div>
 
         <!-- Link ke Bootstrap JavaScript dan jQuery (opsional jika Anda ingin menggunakan fitur-fitur interaktif Bootstrap) -->
