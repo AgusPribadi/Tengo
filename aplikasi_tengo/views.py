@@ -23,3 +23,6 @@ def detail_coffeeshop(request, coffee_shop_id):
 
 def about(request):
     return render(request, 'about.html')
+
+def not_found(request, exception):
+    return render(request, '404.html')

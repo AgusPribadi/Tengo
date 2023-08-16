@@ -163,7 +163,7 @@
                 font-size: 2.5rem;
                 margin-bottom: 2rem;
                 color: #333;
-                font-weight: 700; /* Set ke font-weight: 700 (bold) */
+                font-weight: 700;
             }
 
             .about-content {
@@ -182,7 +182,7 @@
                 font-size: 2.5rem;
                 margin-bottom: 2rem;
                 color: #333;
-                font-weight: 700; /* Set ke font-weight: 700 (bold) */
+                font-weight: 700;
             }
 
             .contact form {
@@ -258,29 +258,29 @@
             <div class="jumbotron jumbotron-fluid text-center">
                 <div class="container">
                     <h1 class="display-4">Tengo</h1>
-                    <p class="lead">Temukan Coffee Shop Terbaik di Sekitarmu!</p>
+                    <p class="lead">Temukan Coffee Shop Terbaik di Sekitar Kamu!</p>
                     <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Masuk Sekarang</a>
                 </div>
             </div>
         </header>
-        <section id="features" class="py-5 bg-light">
+        <section id="features" class="features py-5 bg-light">
             <div class="container text-center">
                 <h2>Apa yang Tengo Tawarkan?</h2>
                 <div class="row mt-4">
                     <div class="col-lg-4 mb-4">
                         <img src="{% static 'img/recommendation.jpg' %}" alt="Rekomendasi Khusus" class="img-fluid" />
                         <h3 class="mt-3">Rekomendasi Khusus</h3>
-                        <p>Dapatkan rekomendasi coffee shop yang sesuai dengan preferensimu. Nikmati kopi favoritmu dengan suasana yang pas.</p>
+                        <p>Dapatkan rekomendasi coffee shop yang sesuai dengan preferensimu. Nikmati kopi dan nugas favoritmu dengan suasana yang asik.</p>
                     </div>
                     <div class="col-lg-4 mb-4">
                         <img src="{% static 'img/reviews.jpg' %}" alt="Ulasan Pengguna" class="img-fluid" />
-                        <h3 class="mt-3">Ulasan Pengguna</h3>
-                        <p>Baca ulasan dari pengguna lain tentang coffee shop favorit mereka. Bagikan pengalamanmu dan beri rekomendasi!</p>
+                        <h3 class="mt-3">Preview Tempat</h3>
+                        <p>Preview video cuplikan dari setiap coffee shop yang hendak kamu kunjungi</p>
                     </div>
                     <div class="col-lg-4 mb-4">
                         <img src="{% static 'img/nearby.jpg' %}" alt="Temukan Coffee Shop Terdekat" class="img-fluid" />
                         <h3 class="mt-3">Temukan Coffee Shop Terdekat</h3>
-                        <p>Cari coffee shop terdekat dari lokasimu. Nikmati kopi spesial tanpa perlu pergi jauh-jauh.</p>
+                        <p>Cari coffee shop paling dekat dari lokasimu. Nikmati nugas dan WFA tanpa perlu pergi jauh-jauh.</p>
                     </div>
                 </div>
             </div>
@@ -289,8 +289,8 @@
             <div class="container text-center">
                 <h2>Tentang Kami</h2>
                 <p class="lead">
-                    Tengo adalah platform rekomendasi coffee shop untuk pecinta kopi sejati. Kami menyediakan informasi lengkap tentang berbagai coffee shop di seluruh kota, sehingga Anda dapat menemukan tempat ngopi favorit Anda dengan
-                    mudah. Bergabunglah dengan komunitas Tengo dan berbagi pengalaman Anda dengan pengguna lain.
+                    Tengo adalah platform rekomendasi coffee shop untuk tempat ngopi, nugas, skripsian dan WFA terbaikmu. Kami menyediakan informasi tentang berbagai coffee shop di seluruh kota Pontianak saat ini, sehingga Kamu dapat
+                    menemukan tempat ngopi favorit kamu dengan mudah.
                 </p>
             </div>
         </section>
@@ -300,13 +300,13 @@
                 <form action="" method="POST" class="mx-auto w-50">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Nama Anda" class="form-control" required />
+                        <input type="text" name="name" placeholder="Nama Kamu" class="form-control" required />
                     </div>
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Alamat Email" class="form-control" required />
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Pesan Anda" class="form-control" required></textarea>
+                        <textarea name="message" placeholder="Pesan Kamu" class="form-control" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Kirim Pesan</button>
                 </form>
