@@ -14,3 +14,10 @@ class CoffeeShop(models.Model):
 
     def __str__(self):
         return self.nama
+    
+class CoffeeShopImage(models.Model):
+    coffee_shop = models.ForeignKey(CoffeeShop, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='coffeeshop_images')
+
+    def __str__(self):
+        return f"Image for {self.coffee_shop.nama}"

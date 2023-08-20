@@ -18,6 +18,40 @@
             referrerpolicy="no-referrer"
         />
         <link rel="stylesheet" href="{% static 'css/detail_coffeeshop.css' %}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css" />
+        <style>
+            /* Tambahkan setelah CSS yang sudah ada */
+            .gallery-images {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .gallery-images a {
+                display: block;
+                width: calc(33.33% - 10px); /* Ubah nilai persentasenya sesuai dengan jumlah gambar yang ingin ditampilkan dalam satu baris */
+                max-width: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .gallery-images img {
+                width: 100%;
+                height: auto;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            .gallery-images a:hover img {
+                transform: scale(1.05);
+            }
+
+            /* Media query untuk layar kecil */
+            @media (max-width: 767px) {
+                .gallery-images a {
+                    width: 100%;
+                }
+            }
+        </style>
     </head>
     <body>
         {% include 'navbar.html' %}
@@ -54,8 +88,24 @@
                     {% endif %}
                     <!-- End of Video section -->
                 </div>
+                <div class="col-md-8">
+                    <!-- Image Galleries -->
+                    {% if coffee_shop.images.all %}
+                    <div class="image-galleries">
+                        <h2>Galeri Gambar</h2>
+                        <div class="gallery-images">
+                            {% for image in coffee_shop.images.all %}
+                            <a href="{{ image.image.url }}" target="_blank">
+                                <img src="{{ image.image.url }}" alt="{{ coffee_shop.nama }}" />
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
                 <!-- Blok konten peta -->
                 <div class="col-md-8">
+                    <br />
                     {% if coffee_shop.google_maps_url %}
                     <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Menuju Kesana via Gmaps</a>
                     {% endif %}
@@ -65,5 +115,18 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lg-thumbnail@1.1.0/dist/lg-thumbnail.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".gallery-images").lightGallery({
+                    mode: "lg-fade",
+                    speed: 600,
+                    download: false,
+                    thumbnail: true,
+                });
+            });
+        </script>
     </body>
 </html>

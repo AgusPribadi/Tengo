@@ -83,3 +83,38 @@ video::-webkit-media-controls {
         height: 20px;
     }
 }
+
+/* Style for the image gallery */
+.image-galleries {
+    margin-top: 20px;
+}
+
+.image-gallery h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.05);
+}
+
+/* Media query for small screens */
+@media (max-width: 767px) {
+    .gallery-images {
+        justify-content: center;
+    }
+}

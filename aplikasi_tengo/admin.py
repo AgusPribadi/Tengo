@@ -1,4 +1,10 @@
 from django.contrib import admin
-from .models import CoffeeShop
+from .models import CoffeeShop, CoffeeShopImage
 
-admin.site.register(CoffeeShop)
+class CoffeeShopImageInline(admin.TabularInline):
+    model = CoffeeShopImage
+    extra = 1  # Number of empty image forms to display
+
+@admin.register(CoffeeShop)
+class CoffeeShopAdmin(admin.ModelAdmin):
+    inlines = [CoffeeShopImageInline]  # Add the inline for images
