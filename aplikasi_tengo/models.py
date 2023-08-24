@@ -7,8 +7,6 @@ class CoffeeShop(models.Model):
     contact = models.CharField(max_length=50)
     review = models.TextField()
     gallery = models.ImageField(upload_to='coffeeshop_gallery')
-    video = models.FileField(upload_to='coffeeshop_videos', blank=True, null=True)
-    video_source = models.CharField(max_length=200, blank=True, null=True)
     instagram_url = models.URLField(max_length=200, null=True, blank=True)
     google_maps_url = models.URLField(blank=True, null=True)
 

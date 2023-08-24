@@ -78,17 +78,6 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <!-- Video section -->
-                    {% if coffee_shop.video %}
-                    <video width="100%" height="auto" controls autoplay muted>
-                        <source src="{{ coffee_shop.video.url }}" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    <p class="video-source">Video source: {{ coffee_shop.video_source }}</p>
-                    {% endif %}
-                    <!-- End of Video section -->
-                </div>
-                <div class="col-md-8">
                     <!-- Image Galleries -->
                     {% if coffee_shop.images.all %}
                     <div class="image-galleries">
@@ -107,7 +96,7 @@
                 <div class="col-md-8">
                     <br />
                     {% if coffee_shop.google_maps_url %}
-                    <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Menuju Kesana via Gmaps</a>
+                    <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Gasss kesana</a>
                     {% endif %}
                 </div>
             </div>
