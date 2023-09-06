@@ -3,8 +3,8 @@ from .models import CoffeeShop, CoffeeShopImage
 
 class CoffeeShopImageInline(admin.TabularInline):
     model = CoffeeShopImage
-    extra = 1  # Number of empty image forms to display
+    extra = 1
 
 @admin.register(CoffeeShop)
 class CoffeeShopAdmin(admin.ModelAdmin):
-    inlines = [CoffeeShopImageInline]  # Add the inline for images
+    inlines = [CoffeeShopImageInline]

@@ -29,7 +29,7 @@
 
             .gallery-images a {
                 display: block;
-                width: calc(33.33% - 10px); /* Ubah nilai persentasenya sesuai dengan jumlah gambar yang ingin ditampilkan dalam satu baris */
+                width: calc(33.33% - 10px);
                 max-width: 100%;
                 border-radius: 10px;
                 overflow: hidden;
@@ -64,7 +64,12 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ coffee_shop.nama }}</h5>
                             <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
-                            <p class="card-text"><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
+                            <p class="card-text">
+                                <strong>Jam Buka:</strong>
+                                {% if coffee_shop.jam_buka == "24 Jam" %}
+                                <strong><span style="color: rgb(197, 255, 4)">{{ coffee_shop.jam_buka }}</span></strong>
+                                {% else %} {{ coffee_shop.jam_buka }} {% endif %}
+                            </p>
                             <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
                             <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
                             {% if coffee_shop.instagram_url %}

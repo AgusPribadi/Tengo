@@ -115,7 +115,12 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ coffee_shop.nama }}</h5>
                             <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
-                            <p class="card-text"><strong>Jam Buka:</strong> {{ coffee_shop.jam_buka }}</p>
+                            <p class="card-text">
+                                <strong>Jam Buka:</strong>
+                                {% if coffee_shop.jam_buka == "24 Jam" %}
+                                <strong><span style="color: rgb(197, 255, 4)">{{ coffee_shop.jam_buka }}</span></strong>
+                                {% else %} {{ coffee_shop.jam_buka }} {% endif %}
+                            </p>
                             <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
                             <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
                         </div>
@@ -128,7 +133,7 @@
             {% endif %}
         </div>
 
-        <!-- Link ke Bootstrap JavaScript dan jQuery (opsional jika Anda ingin menggunakan fitur-fitur interaktif Bootstrap) -->
+        <!-- Link ke Bootstrap JavaScript dan jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
