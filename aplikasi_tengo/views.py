@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import CoffeeShop
+from .models import CoffeeShop, GambarLowongan
 from django.db.models import Q
 
 def index(request):
@@ -26,3 +26,7 @@ def about(request):
 
 def not_found(request, exception):
     return render(request, '404.html')
+
+def gambar_lowongan(request):
+    gambar_lowongan = GambarLowongan.objects.all()
+    return render(request, 'gambar_lowongan.html', {'gambar_lowongan': gambar_lowongan})

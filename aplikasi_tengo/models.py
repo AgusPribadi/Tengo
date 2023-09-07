@@ -19,3 +19,9 @@ class CoffeeShopImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.coffee_shop.nama}"
+    
+class GambarLowongan(models.Model):
+    gambar = models.ImageField(upload_to='lowongan_gambar')
+
+    def __str__(self):
+        return f"Image for {self.gambar}"

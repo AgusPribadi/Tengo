@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{% static 'css/loker.css' %}" />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="container">
+            <h1>Galeri Lowongan Kerja</h1>
+            <div class="gambar-loker">
+                {% for gambar in gambar_lowongan %}
+                <a href="{{ gambar.gambar.url }}" target="_blank" class="image-link">
+                    <img src="{{ gambar.gambar.url }}" class="custom-img-size" alt="{{ gambar.judul }}" />
+                    <br />
+                    <br />
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Gallery Lightbox Script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lg-thumbnail@1.1.0/dist/lg-thumbnail.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".gambar-loker").lightGallery({
+                    mode: "lg-fade",
+                    speed: 600,
+                    download: false,
+                    thumbnail: true,
+                });
+            });
+        </script>
+    </body>
+</html>
