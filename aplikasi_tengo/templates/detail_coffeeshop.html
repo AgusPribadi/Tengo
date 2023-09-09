@@ -45,7 +45,6 @@
                 transform: scale(1.05);
             }
 
-            /* Media query untuk layar kecil */
             @media (max-width: 767px) {
                 .gallery-images a {
                     width: 100%;
@@ -73,10 +72,15 @@
                             <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
                             <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
                             {% if coffee_shop.instagram_url %}
-                            <div class="instagram-container">
+                            <div class="social-media">
                                 <a href="{{ coffee_shop.instagram_url }}" target="_blank" class="instagram-icon">
                                     <i class="fa-brands fa-instagram"></i>
                                 </a>
+                                {% if coffee_shop.tiktok_url %}
+                                <a href="{{ coffee_shop.tiktok_url }}" target="_blank" class="tiktok-icon">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </a>
+                                {% endif %}
                             </div>
                             {% endif %}
                         </div>

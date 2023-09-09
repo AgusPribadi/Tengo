@@ -9,95 +9,16 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-        <style>
-            body {
-                padding: 20px;
-                font-family: "Poppins", sans-serif;
-                background-color: #111;
-            }
-
-            h1 {
-                color: white;
-            }
-
-            /* Mengatur jarak antara teks pada card */
-            .coffee-card .card-body p {
-                margin-bottom: 5px;
-            }
-
-            /* Mengatur margin untuk mengisi ruang di dalam card */
-            .coffee-card {
-                margin: 10px;
-                margin-bottom: 20px;
-            }
-
-            /* Mengatur teks pada card */
-            .coffee-card .card-body {
-                padding: 10px;
-            }
-
-            /* Mengatur lebar gambar pada card agar tidak terlalu besar */
-            .coffee-card .card-img-top {
-                max-width: 100%;
-                height: 200px; /* Ubah nilai tinggi gambar sesuai kebutuhan */
-                object-fit: cover; /* Menyesuaikan gambar agar sesuai dengan ukuran kontainer */
-            }
-
-            /* Mengatur ukuran dan jarak pada judul coffee shop */
-            .coffee-card .card-title {
-                font-size: 20px;
-                font-weight: bold;
-                margin-top: 10px;
-                border-bottom: 1px solid #ccc; /* Membuat garis bawah pada judul */
-                padding-bottom: 5px;
-            }
-
-            /* Mengatur style untuk informasi di dalam card */
-            .coffee-card .card-text {
-                font-size: 14px;
-                margin-bottom: 5px;
-            }
-
-            .bold-text {
-                font-weight: bold;
-            }
-
-            /* Mengatur style untuk ulasan di dalam card */
-            .coffee-card .card-text:last-child {
-                margin-bottom: 10px;
-            }
-
-            /* Mengatur tinggi card agar tinggi seluruhnya sama */
-            .coffee-card .card {
-                height: 100%;
-                cursor: pointer; /* Menampilkan kursor tangan (pointer) saat mengarahkan ke card */
-            }
-
-            /* Mengatur tampilan container agar rapi */
-            .container {
-                padding: 20px;
-            }
-
-            /* Mengatur jarak antar card pada tampilan desktop */
-            @media (min-width: 992px) {
-                .row {
-                    margin-left: -10px;
-                    margin-right: -10px;
-                }
-                .coffee-card {
-                    padding: 0 10px;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
     </head>
     <body>
         {% include 'navbar.html' %}
         <div class="container">
-            <h1 class="my-4 bold-text">Tengo - Daftar Coffee Shop</h1>
+            <h1 class="my-4 bold-text">Tengo - Daftar Tempat Ngopi</h1>
             <form method="GET" enctype="multipart/form-data">
                 <!-- Form pencarian -->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari coffee shop..." name="q" value="{{ request.GET.q }}" />
+                    <input type="text" class="form-control" placeholder="Cari tempat ngopi..." name="q" value="{{ request.GET.q }}" />
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">Cari</button>
                     </div>

@@ -8,8 +8,9 @@ class CoffeeShop(models.Model):
     review = models.TextField()
     gallery = models.ImageField(upload_to='coffeeshop_gallery')
     instagram_url = models.URLField(max_length=200, null=True, blank=True)
+    tiktok_url = models.URLField(max_length=200, null=True, blank=True)
     google_maps_url = models.URLField(blank=True, null=True)
-
+        
     def __str__(self):
         return self.nama
     
