@@ -14,8 +14,8 @@ def home(request):
     
     return render(request, 'home.html', {'coffee_shops': coffee_shops})
 
-def detail_coffeeshop(request, coffee_shop_id):
-    coffee_shop = get_object_or_404(CoffeeShop, id=coffee_shop_id)
+def detail_coffeeshop(request, slug):
+    coffee_shop = get_object_or_404(CoffeeShop, slug=slug)
     context = {
         'coffee_shop': coffee_shop,
     }

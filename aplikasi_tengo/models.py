@@ -1,4 +1,11 @@
 from django.db import models
+from django.utils.text import slugify
+
+class CoffeeShopTag(models.Model):
+    tag_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.tag_name
 
 class CoffeeShop(models.Model):
     nama = models.CharField(max_length=200)
@@ -10,7 +17,14 @@ class CoffeeShop(models.Model):
     instagram_url = models.URLField(max_length=200, null=True, blank=True)
     tiktok_url = models.URLField(max_length=200, null=True, blank=True)
     google_maps_url = models.URLField(blank=True, null=True)
-        
+    tags = models.ManyToManyField('CoffeeShopTag', blank=True)
+    slug = models.SlugField(unique=True, blank=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nama)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.nama
     

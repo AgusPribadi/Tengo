@@ -29,7 +29,7 @@
                 {% for coffee_shop in coffee_shops %}
                 <div class="col-md-4">
                     <div class="card coffee-card">
-                        <a href="{% url 'detail_coffeeshop' coffee_shop.id %}">
+                        <a href="{% url 'detail_coffeeshop' coffee_shop.slug %}">
                             <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
                         </a>
                         <div class="card-body">

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CoffeeShop, CoffeeShopImage, GambarLowongan
+from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan
 
 class CoffeeShopImageInline(admin.TabularInline):
     model = CoffeeShopImage
@@ -10,3 +10,4 @@ class CoffeeShopAdmin(admin.ModelAdmin):
     inlines = [CoffeeShopImageInline]
 
 admin.site.register(GambarLowongan)
+admin.site.register(CoffeeShopTag)

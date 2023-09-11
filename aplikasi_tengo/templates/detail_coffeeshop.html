@@ -20,7 +20,10 @@
         <link rel="stylesheet" href="{% static 'css/detail_coffeeshop.css' %}" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css" />
         <style>
-            /* Tambahkan setelah CSS yang sudah ada */
+            .cocok-untuk .card-title {
+                color: #111;
+            }
+
             .gallery-images {
                 display: flex;
                 flex-wrap: wrap;
@@ -87,7 +90,6 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <!-- Image Galleries -->
                     {% if coffee_shop.images.all %}
                     <div class="image-galleries">
                         <h2>Galeri Gambar</h2>
@@ -101,12 +103,33 @@
                     </div>
                     {% endif %}
                 </div>
-                <!-- Blok konten peta -->
+                <div class="col-md-8 cocok-untuk">
+                    <h2>Cocok untuk:</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card tag-card">
+                                <div class="card-body">
+                                    <h6 class="card-title">{% for tag in coffee_shop.tags.all %} {{ tag.tag_name }}{% if not forloop.last %}, {% endif %} {% endfor %}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-8">
                     <br />
                     {% if coffee_shop.google_maps_url %}
                     <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Gasss ke sana</a>
                     {% endif %}
+                </div>
+                <div class="card-body">
+                    <!-- Tautan berbagi ke WhatsApp -->
+                    <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success"> Bagiin ke WhatsApp </a>
+
+                    <!-- Tautan berbagi ke Facebook -->
+                    <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary"> Bagiin ke Facebook </a>
+
+                    <!-- Tautan berbagi ke Twitter -->
+                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagiin ke Twitter </a>
                 </div>
             </div>
         </div>
