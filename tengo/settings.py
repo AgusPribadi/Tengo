@@ -40,6 +40,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Konfigurasi sesi
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Simpan sesi di database
+SESSION_COOKIE_NAME = 'my_session_cookie'  # Nama cookie sesi
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # Durasi sesi dalam detik (misalnya, 30 hari)
+
 ROOT_URLCONF = "tengo.urls"
 
 TEMPLATES = [
