@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 
 class CoffeeShopTag(models.Model):
     tag_name = models.CharField(max_length=50)
@@ -40,3 +41,11 @@ class GambarLowongan(models.Model):
 
     def __str__(self):
         return f"Image for {self.gambar}"
+    
+class Subscription(models.Model):
+    email = models.EmailField(unique=True)  # Simpan alamat email pengguna yang berlangganan
+    subscribed_at = models.DateTimeField(auto_now_add=True)  # Waktu langganan dibuat
+    is_active = models.BooleanField(default=True)  # Status langganan (aktif/nonaktif)
+
+    def __str__(self):
+        return self.email

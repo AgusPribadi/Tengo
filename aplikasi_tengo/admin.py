@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan
+from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription
 from django.http import HttpResponse
 import csv
 
@@ -28,3 +28,8 @@ class CoffeeShopAdmin(admin.ModelAdmin):
 admin.site.register(CoffeeShop, CoffeeShopAdmin)
 admin.site.register(GambarLowongan)
 admin.site.register(CoffeeShopTag)
+
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ['email', 'subscribed_at', 'is_active']
+
+admin.site.register(Subscription, SubscriptionAdmin)
