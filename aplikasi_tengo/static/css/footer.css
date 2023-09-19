@@ -1,0 +1,92 @@
+/* footer.css */
+
+/* Style for the footer container */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+/* Style for the top section of the footer */
+.footer-top {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for the headline in the top section */
+.footer-headline h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style for the subscribe input and button in the top section */
+.footer-subscribe input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.footer-subscribe button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for the footer columns */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Style for each individual column */
+.footer-columns section {
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-columns h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-columns ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-columns li {
+    margin-bottom: 5px;
+}
+
+/* Style for the social links in the bottom section */
+.social-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.social-links li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Style for the copyright notice in the bottom section */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #999;
+}

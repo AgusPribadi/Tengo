@@ -6,11 +6,6 @@ def index(request):
     return render(request, 'index.html')
 
 def home(request):
-    # Ambil atau buat sesi untuk menyimpan jumlah tampilan
-    if 'total_page_views' not in request.session:
-        request.session['total_page_views'] = 1
-    else:
-        request.session['total_page_views'] += 1
 
     # Dapatkan hasil pencarian jika ada
     query = request.GET.get('q')
@@ -19,7 +14,7 @@ def home(request):
     else:
         coffee_shops = CoffeeShop.objects.all()
 
-    return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_page_views': request.session['total_page_views']})
+    return render(request, 'home.html', {'coffee_shops': coffee_shops, })
 
 def detail_coffeeshop(request, slug):
     coffee_shop = get_object_or_404(CoffeeShop, slug=slug)
