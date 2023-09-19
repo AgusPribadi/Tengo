@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from .models import CoffeeShop, GambarLowongan
 from django.db.models import Q
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def index(request):
     return render(request, 'index.html')
 
 def home(request):
 
-    # Dapatkan hasil pencarian jika ada
     query = request.GET.get('q')
     if query:
         coffee_shops = CoffeeShop.objects.filter(Q(nama__icontains=query) | Q(alamat__icontains=query))
@@ -32,3 +33,12 @@ def not_found(request, exception):
 def gambar_lowongan(request):
     gambar_lowongan = GambarLowongan.objects.all()
     return render(request, 'gambar_lowongan.html', {'gambar_lowongan': gambar_lowongan})
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        return HttpResponseRedirect(reverse('success'))
+    return render(request, 'footer.html')
+
+def success(request):
+    return render(request, 'success.html')

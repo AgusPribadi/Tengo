@@ -1,27 +1,28 @@
-/* footer.css */
-
-/* Style for the footer container */
 footer {
     background-color: #333;
     color: #fff;
     padding: 40px 0;
 }
 
-/* Style for the top section of the footer */
 .footer-top {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Style for the headline in the top section */
 .footer-headline h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-/* Style for the subscribe input and button in the top section */
+.footer-headline p {
+    margin-bottom: 10px;
+}
+
+.footer-columns li a {
+    color: #ffffff80;
+}
+
 .footer-subscribe input[type="email"] {
-    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #fff;
@@ -46,7 +47,6 @@ footer {
     flex-wrap: wrap;
 }
 
-/* Style for each individual column */
 .footer-columns section {
     flex: 1;
     margin-right: 20px;
@@ -67,7 +67,6 @@ footer {
     margin-bottom: 5px;
 }
 
-/* Style for the social links in the bottom section */
 .social-links ul {
     list-style: none;
     padding: 0;
@@ -83,10 +82,30 @@ footer {
     height: 24px;
 }
 
-/* Style for the copyright notice in the bottom section */
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
     color: #999;
+}
+
+/* Tampilan mobile */
+@media screen and (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .footer-columns section {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .social-links li {
+        margin-right: 10px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
 }
