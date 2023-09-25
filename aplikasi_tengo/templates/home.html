@@ -16,19 +16,23 @@
 
         <div class="container">
             <h1 class="my-4 bold-text">Tengo - Daftar Tempat Ngopi</h1>
+
             <!-- Tombol Acak -->
-            <form method="GET" enctype="multipart/form-data">
-                <button class="btn btn-primary mb-3" type="submit" name="randomize">Acak</button>
+            <form method="GET" enctype="multipart/form-data" class="mb-3">
+                <button class="btn btn-primary" type="submit" name="randomize">Acak</button>
             </form>
+
+            <!-- Form pencarian -->
             <form method="GET" enctype="multipart/form-data">
-                <!-- Form pencarian -->
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari tempat ngopi..." name="q" value="{{ request.GET.q }}" />
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">Cari</button>
                     </div>
                 </div>
+                <p style="color: white">{{ total_coffee_shops }} Tempat Ngopi</p>
             </form>
+
             {% if coffee_shops %}
             <div class="row">
                 {% for coffee_shop in coffee_shops %}

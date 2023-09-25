@@ -21,7 +21,9 @@ def home(request):
     coffee_shops = list(coffee_shops)
     random.shuffle(coffee_shops)
 
-    return render(request, 'home.html', {'coffee_shops': coffee_shops})
+    total_coffee_shops = len(coffee_shops)  # Menghitung jumlah total Coffee Shop
+
+    return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops})
 
 def detail_coffeeshop(request, slug):
     coffee_shop = get_object_or_404(CoffeeShop, slug=slug)
