@@ -54,8 +54,8 @@ def subscribe(request):
             # Send a confirmation email
             subject = 'Berlangganan Tengo Berhasil'
             message = 'Selamat! Email kamu telah berlangganan di Tengo. ' \
-                      'Ketika Tengo update, kami akan automatis mengirimkan ke email kamu 😊'
-            from_email = ''
+                      'Ketika Tengo update, kami akan otomatis mengirimkan ke email kamu 😊'
+            from_email = 'hitengo2023@gmail.com'
             recipient_list = [email]
 
             send_mail(subject, message, from_email, recipient_list, fail_silently=False)

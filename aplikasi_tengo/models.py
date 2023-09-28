@@ -43,9 +43,9 @@ class GambarLowongan(models.Model):
         return f"Image for {self.gambar}"
     
 class Subscription(models.Model):
-    email = models.EmailField(unique=True)  # Simpan alamat email pengguna yang berlangganan
-    subscribed_at = models.DateTimeField(auto_now_add=True)  # Waktu langganan dibuat
-    is_active = models.BooleanField(default=True)  # Status langganan (aktif/nonaktif)
+    email = models.EmailField(unique=True) 
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True) 
 
     def __str__(self):
         return self.email
