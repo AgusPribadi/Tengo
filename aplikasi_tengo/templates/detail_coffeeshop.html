@@ -53,6 +53,23 @@
                     width: 100%;
                 }
             }
+
+            .btn {
+                margin: 5px;
+            }
+
+            @media (max-width: 768px) {
+                .card-body {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .btn {
+                    width: 100%;
+                    margin: 5px 0;
+                }
+            }
         </style>
     </head>
     <body>
@@ -123,13 +140,13 @@
                 </div>
                 <div class="card-body">
                     <!-- Tautan berbagi ke WhatsApp -->
-                    <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success"> Bagiin ke WhatsApp </a>
+                    <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success"> Bagikan ke WhatsApp </a>
 
                     <!-- Tautan berbagi ke Facebook -->
-                    <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary"> Bagiin ke Facebook </a>
+                    <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary"> Bagikan ke Facebook </a>
 
                     <!-- Tautan berbagi ke Twitter -->
-                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagiin ke Twitter </a>
+                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagikan ke Twitter </a>
                 </div>
             </div>
         </div>
@@ -142,7 +159,7 @@
         <script>
             $(document).ready(function () {
                 $(".gallery-images").lightGallery({
-                    mode: "lg-fade",
+                    mode: "lg-slide",
                     speed: 600,
                     download: false,
                     thumbnail: true,
