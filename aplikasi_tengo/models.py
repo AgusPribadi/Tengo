@@ -20,6 +20,7 @@ class CoffeeShop(models.Model):
     google_maps_url = models.URLField(blank=True, null=True)
     tags = models.ManyToManyField('CoffeeShopTag', blank=True)
     slug = models.SlugField(unique=True, blank=True)
+    menu = models.URLField(max_length=200, null=True, blank=True)
     
     def save(self, *args, **kwargs):
         if not self.slug:

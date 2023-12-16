@@ -16,10 +16,21 @@ class CoffeeShopAdmin(admin.ModelAdmin):
         response['Content-Disposition'] = 'attachment; filename="coffee_shops.csv"'
 
         writer = csv.writer(response)
-        writer.writerow(['Nomor', 'Nama', 'Alamat', 'Jam Buka', 'Kontak', 'Review', 'Instagram URL', 'TikTok URL', 'Google Maps URL'])
+        writer.writerow(['Nomor', 'Nama', 'Alamat', 'Jam Buka', 'Kontak', 'Review', 'Instagram URL', 'TikTok URL', 'Google Maps URL', 'Menu'])
 
         for index, coffee_shop in enumerate(queryset, start=1):
-            writer.writerow([index, coffee_shop.nama, coffee_shop.alamat, coffee_shop.jam_buka, coffee_shop.contact, coffee_shop.review, coffee_shop.instagram_url, coffee_shop.tiktok_url, coffee_shop.google_maps_url])
+            writer.writerow([
+                index, 
+                coffee_shop.nama, 
+                coffee_shop.alamat, 
+                coffee_shop.jam_buka, 
+                coffee_shop.contact, 
+                coffee_shop.review, 
+                coffee_shop.instagram_url, 
+                coffee_shop.tiktok_url, 
+                coffee_shop.google_maps_url,
+                coffee_shop.menu  # Menambahkan menu ke dalam baris CSV
+            ])
 
         return response
 

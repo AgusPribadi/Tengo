@@ -48,21 +48,18 @@
                 transform: scale(1.05);
             }
 
+            .cocok-untuk .col-md-4 {
+                margin-top: 10px;
+            }
+
+            /* Properti untuk layar berukuran lebih kecil */
             @media (max-width: 767px) {
                 .gallery-images a {
                     width: 100%;
                 }
-            }
 
-            .btn {
-                margin: 5px;
-            }
-
-            @media (max-width: 768px) {
-                .card-body {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+                .btn {
+                    margin: 0;
                 }
 
                 .btn {
@@ -130,8 +127,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <!-- Tambahkan class text-center di sini -->
+                                    <h5 class="card-title">Menu</h5>
+                                    {% if coffee_shop.menu %}
+                                    <a href="{{ coffee_shop.menu }}" class="btn btn-secondary" target="_blank">Lihat Menu</a>
+                                    {% else %}
+                                    <p class="card-text"><strong>Menu:</strong> Belum Tersedia</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="col-md-8">
                     <br />
                     {% if coffee_shop.google_maps_url %}
