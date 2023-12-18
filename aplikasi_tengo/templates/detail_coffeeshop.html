@@ -160,6 +160,21 @@
                     <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagikan ke Twitter </a>
                 </div>
             </div>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "{{ request.build_absolute_uri }}";
+                    this.page.identifier = "{{ coffee_shop.id }}"; // Ganti dengan identifier unik dari objek yang dilihat
+                };
+                (function () {
+                    var d = document,
+                        s = d.createElement("script");
+                    s.src = "https://tengo2023.disqus.com/embed.js"; // Ganti dengan shortname Anda
+                    s.setAttribute("data-timestamp", +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a> </noscript>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
