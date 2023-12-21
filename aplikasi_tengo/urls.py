@@ -7,6 +7,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('not-found/', views.not_found, name='not_found'),
     path('detail/<slug:slug>/', views.detail_coffeeshop, name='detail_coffeeshop'),
+    path('filtered_location/<int:location_id>/', views.filtered_location, name='filtered_location'),
     path('gambar_lowongan/', views.gambar_lowongan, name='gambar_lowongan'),
     path('subscribe/', views.subscribe, name='subscribe'),
     path('success/', views.success, name='success'),

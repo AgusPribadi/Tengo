@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import send_mail
-from .models import Subscription
+from .models import Subscription, Lokasi
 import random
 
 def index(request):
@@ -12,18 +12,30 @@ def index(request):
 
 def home(request):
     query = request.GET.get('q')
+    lokasi_id = request.GET.get('lokasi')  # Mendapatkan ID lokasi yang dipilih
+
     coffee_shops = CoffeeShop.objects.all()
 
     if query:
         coffee_shops = coffee_shops.filter(Q(nama__icontains=query) | Q(alamat__icontains=query))
 
-    # Acak daftar Coffee Shop
-    coffee_shops = list(coffee_shops)
-    random.shuffle(coffee_shops)
+    # Jika ada filter berdasarkan lokasi yang dipilih, filter berdasarkan lokasi tersebut
+    if lokasi_id:
+        coffee_shops = coffee_shops.filter(lokasi__id=lokasi_id)
 
-    total_coffee_shops = len(coffee_shops)  # Menghitung jumlah total Coffee Shop
+    # Ambil semua lokasi untuk dropdown select
+    locations = Lokasi.objects.all()
 
-    return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops})
+    total_coffee_shops = coffee_shops.count()  # Menghitung jumlah total Coffee Shop
+
+    return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops, 'locations': locations})
+
+
+def filtered_location(request, location_id):
+    selected_location = Lokasi.objects.get(pk=location_id)
+    coffee_shops = CoffeeShop.objects.filter(lokasi=selected_location)
+
+    return render(request, 'home.html', {'coffee_shops': coffee_shops})
 
 def detail_coffeeshop(request, slug):
     coffee_shop = get_object_or_404(CoffeeShop, slug=slug)

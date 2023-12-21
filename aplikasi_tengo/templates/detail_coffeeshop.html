@@ -5,19 +5,22 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tengo - Detail Tengo</title>
+        <!-- Favicon -->
         <link rel="icon" href="{% static 'img/tengo.ico' %}" type="image/x-icon" />
+
+        <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+        <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-            integrity="sha512-d9hnnRRjBZqb30zq6NIXDz+M1lyfXcvRdMzh41LUQytU0bjb9daYuhTswd0a+MI3pGk1RBBYhU1O+bzFO3LDA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
+
+        <!-- CDN Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+        <!-- Link CSS -->
         <link rel="stylesheet" href="{% static 'css/detail_coffeeshop.css' %}" />
+
+        <!-- CDN Light Gallery -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css" />
         <style>
             .cocok-untuk .card-title {
@@ -52,7 +55,6 @@
                 margin-top: 10px;
             }
 
-            /* Properti untuk layar berukuran lebih kecil */
             @media (max-width: 767px) {
                 .gallery-images a {
                     width: 100%;
@@ -66,6 +68,18 @@
                     width: 100%;
                     margin: 5px 0;
                 }
+            }
+
+            .instagram-embed {
+                border-radius: 20px;
+                overflow: hidden;
+                width: 320px;
+                height: 320px;
+            }
+
+            .instagram-embed iframe {
+                width: 100%;
+                height: 100%;
             }
         </style>
     </head>
@@ -83,7 +97,7 @@
                             <p class="card-text">
                                 <strong>Jam Buka:</strong>
                                 {% if coffee_shop.jam_buka == "24 Jam" %}
-                                <strong><span style="color: rgb(197, 255, 4)">{{ coffee_shop.jam_buka }}</span></strong>
+                                <strong><span style="color: #00ff00">{{ coffee_shop.jam_buka }}</span></strong>
                                 {% else %} {{ coffee_shop.jam_buka }} {% endif %}
                             </p>
                             <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
@@ -130,7 +144,6 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <!-- Tambahkan class text-center di sini -->
                                     <h5 class="card-title">Menu</h5>
                                     {% if coffee_shop.menu %}
                                     <a href="{{ coffee_shop.menu }}" class="btn btn-secondary" target="_blank">Lihat Menu</a>
@@ -140,42 +153,55 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Embed Instagram -->
+                        <div class="col-md-8">
+                            <div class="instagram-embed">
+                                <iframe src="{{ coffee_shop.instagram_url }}/embed/" width="320" height="320" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                        <!-- End Embed Instagram -->
                     </div>
                 </div>
 
+                <!-- Gasss ke sana -->
                 <div class="col-md-8">
                     <br />
                     {% if coffee_shop.google_maps_url %}
                     <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Gasss ke sana</a>
                     {% endif %}
                 </div>
+                <!-- End Gasss ke sana -->
+
+                <!-- Tautan Berbagi -->
                 <div class="card-body">
-                    <!-- Tautan berbagi ke WhatsApp -->
                     <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success"> Bagikan ke WhatsApp </a>
-
-                    <!-- Tautan berbagi ke Facebook -->
                     <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary"> Bagikan ke Facebook </a>
-
-                    <!-- Tautan berbagi ke Twitter -->
                     <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagikan ke Twitter </a>
                 </div>
+                <!-- End Tautan Berbagi -->
             </div>
+
+            <!-- Disqus -->
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
                     this.page.url = "{{ request.build_absolute_uri }}";
-                    this.page.identifier = "{{ coffee_shop.id }}"; // Ganti dengan identifier unik dari objek yang dilihat
+                    this.page.identifier = "{{ coffee_shop.id }}";
                 };
                 (function () {
                     var d = document,
                         s = d.createElement("script");
-                    s.src = "https://tengo2023.disqus.com/embed.js"; // Ganti dengan shortname Anda
+                    s.src = "https://tengo2023.disqus.com/embed.js";
                     s.setAttribute("data-timestamp", +new Date());
                     (d.head || d.body).appendChild(s);
                 })();
             </script>
             <noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a> </noscript>
+            <!-- End Disqus -->
         </div>
+        {% include 'footer.html' %}
+
+        <!-- Sesi CDN Javascript -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -192,5 +218,6 @@
                 });
             });
         </script>
+        <!-- End CDN Javascript -->
     </body>
 </html>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription
+from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription, Lokasi
 from django.http import HttpResponse
 import csv
 
@@ -16,7 +16,7 @@ class CoffeeShopAdmin(admin.ModelAdmin):
         response['Content-Disposition'] = 'attachment; filename="coffee_shops.csv"'
 
         writer = csv.writer(response)
-        writer.writerow(['Nomor', 'Nama', 'Alamat', 'Jam Buka', 'Kontak', 'Review', 'Instagram URL', 'TikTok URL', 'Google Maps URL', 'Menu'])
+        writer.writerow(['Nomor', 'Nama', 'Alamat', 'Jam Buka', 'Kontak', 'Review', 'Instagram URL', 'TikTok URL', 'Google Maps URL', 'Menu', 'Lokasi'])
 
         for index, coffee_shop in enumerate(queryset, start=1):
             writer.writerow([
@@ -29,7 +29,7 @@ class CoffeeShopAdmin(admin.ModelAdmin):
                 coffee_shop.instagram_url, 
                 coffee_shop.tiktok_url, 
                 coffee_shop.google_maps_url,
-                coffee_shop.menu  # Menambahkan menu ke dalam baris CSV
+                coffee_shop.menu 
             ])
 
         return response
@@ -39,6 +39,8 @@ class CoffeeShopAdmin(admin.ModelAdmin):
 admin.site.register(CoffeeShop, CoffeeShopAdmin)
 admin.site.register(GambarLowongan)
 admin.site.register(CoffeeShopTag)
+admin.site.register(Lokasi)
+
 
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ['email', 'subscribed_at', 'is_active']

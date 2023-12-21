@@ -13,16 +13,10 @@
     </head>
     <body>
         {% include 'navbar.html' %}
-
         <div class="container">
             <h1 class="my-4 bold-text">Tengo - Daftar Tempat Ngopi</h1>
 
-            <!-- Tombol Acak -->
-            <form method="GET" enctype="multipart/form-data" class="mb-3">
-                <button class="btn btn-primary" type="submit" name="randomize">Acak</button>
-            </form>
-
-            <!-- Form pencarian -->
+            <!-- Form pencarian dan filter berdasarkan lokasi -->
             <form method="GET" enctype="multipart/form-data">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari tempat ngopi..." name="q" value="{{ request.GET.q }}" />
@@ -31,8 +25,20 @@
                     </div>
                 </div>
                 <p style="color: white">{{ total_coffee_shops }} Tempat Ngopi</p>
+
+                <!-- Dropdown select untuk filter berdasarkan lokasi -->
+                <div class="form-group">
+                    <select class="custom-select" id="lokasi" name="lokasi">
+                        <option value="">Semua Lokasi</option>
+                        {% for location in locations %}
+                        <option value="{{ location.id }}">{{ location.nama_lokasi }}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="btn btn-primary btn-sm mt-2" type="submit">Filter</button>
+                </div>
             </form>
 
+            <!-- Daftar Coffee Shop -->
             {% if coffee_shops %}
             <div class="row">
                 {% for coffee_shop in coffee_shops %}
@@ -47,7 +53,7 @@
                             <p class="card-text">
                                 <strong>Jam Buka:</strong>
                                 {% if coffee_shop.jam_buka == "24 Jam" %}
-                                <strong><span style="color: rgb(197, 255, 4)">{{ coffee_shop.jam_buka }}</span></strong>
+                                <strong><span style="color: #00ff00">{{ coffee_shop.jam_buka }}</span></strong>
                                 {% else %} {{ coffee_shop.jam_buka }} {% endif %}
                             </p>
                             <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
@@ -66,5 +72,15 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+            function filterByLocation() {
+                var select = document.getElementById("lokasiSelect");
+                var selectedValue = select.options[select.selectedIndex].value;
+
+                var url = "/filtered_location/" + (selectedValue ? selectedValue + "/" : ""); // Sesuaikan dengan URL filter lokasi Anda
+                window.location.href = url;
+            }
+        </script>
     </body>
 </html>
