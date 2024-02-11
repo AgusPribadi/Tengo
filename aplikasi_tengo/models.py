@@ -16,7 +16,8 @@ class CoffeeShop(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     menu = models.URLField(max_length=200, null=True, blank=True)
     lokasi = models.ManyToManyField('Lokasi')
-    
+    fasilitas = models.ManyToManyField('Fasilitas', blank=True)
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.nama)
@@ -24,6 +25,24 @@ class CoffeeShop(models.Model):
 
     def __str__(self):
         return self.nama
+
+class Fasilitas(models.Model):
+    MUSHOLLA = 'Musholla'
+    AC = 'AC'
+    VIP_ROOM = 'VIP Room'
+    PERMAINAN = 'Permainan'
+
+    FASILITAS_CHOICES = [
+        (MUSHOLLA, 'Musholla'),
+        (AC, 'AC'),
+        (VIP_ROOM, 'VIP Room'),
+        (PERMAINAN, 'Permainan'),
+    ]
+
+    nama_fasilitas = models.CharField(max_length=20, choices=FASILITAS_CHOICES, unique=True)
+
+    def __str__(self):
+        return self.nama_fasilitas
 
 class CoffeeShopTag(models.Model):
     tag_name = models.CharField(max_length=50)

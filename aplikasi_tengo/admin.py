@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription, Lokasi
-from django.http import HttpResponse
-import csv
+from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription, Lokasi, Fasilitas
 
 class CoffeeShopImageInline(admin.TabularInline):
     model = CoffeeShopImage
@@ -36,11 +34,14 @@ class CoffeeShopAdmin(admin.ModelAdmin):
 
     download_data_as_csv.short_description = 'Download Data as CSV'
 
+class FasilitasAdmin(admin.ModelAdmin):
+    list_display = ['nama_fasilitas']
+
 admin.site.register(CoffeeShop, CoffeeShopAdmin)
 admin.site.register(GambarLowongan)
 admin.site.register(CoffeeShopTag)
 admin.site.register(Lokasi)
-
+admin.site.register(Fasilitas, FasilitasAdmin)
 
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ['email', 'subscribed_at', 'is_active']
