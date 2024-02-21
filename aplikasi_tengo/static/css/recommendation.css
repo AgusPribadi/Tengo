@@ -1,0 +1,23 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #111;
+    color: #fff;
+    line-height: 1.6;
+    font-weight: 400;
+}
+.container {
+    padding: 20px;
+}
+
+/* CSS untuk konten berada di tengah */
+.frame-twitter {
+    text-align: center;
+}
+
+/* CSS untuk responsif di perangkat mobile */
+@media (max-width: 767px) {
+    iframe {
+        width: 100%;
+        height: auto;
+    }
+}

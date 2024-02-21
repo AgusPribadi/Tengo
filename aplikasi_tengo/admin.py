@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription, Lokasi, Fasilitas
+from .models import CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, Subscription, Lokasi, Fasilitas, Recommendation
 
 class CoffeeShopImageInline(admin.TabularInline):
     model = CoffeeShopImage
@@ -37,13 +37,13 @@ class CoffeeShopAdmin(admin.ModelAdmin):
 class FasilitasAdmin(admin.ModelAdmin):
     list_display = ['nama_fasilitas']
 
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ['email', 'subscribed_at', 'is_active']
+
 admin.site.register(CoffeeShop, CoffeeShopAdmin)
 admin.site.register(GambarLowongan)
 admin.site.register(CoffeeShopTag)
 admin.site.register(Lokasi)
+admin.site.register(Recommendation)
 admin.site.register(Fasilitas, FasilitasAdmin)
-
-class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ['email', 'subscribed_at', 'is_active']
-
 admin.site.register(Subscription, SubscriptionAdmin)

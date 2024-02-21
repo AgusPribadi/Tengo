@@ -76,3 +76,10 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.email
+    
+class Recommendation(models.Model):
+    tweet_url = models.URLField()
+    description = models.TextField()
+
+    def __str__(self):
+        return self.description

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recommendation</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{% static 'css/recommendation.css' %}" />
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="container">
+            <h1>Recommendation</h1>
+            {% for recommendation in recommendations %}
+            <div class="frame-twitter">
+                <p>{{ recommendation.description }}</p>
+                <iframe border="0" frameborder="0" height="250" width="550" src="https://twitframe.com/show?url={{ recommendation.tweet_url }}"></iframe>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+    <script>
+        $(document).ready(function () {
+            /* find all iframes with ids starting with "tweet_" */
+            $("iframe[id^='tweet_']").load(function () {
+                this.contentWindow.postMessage({ element: this.id, query: "height" }, "https://twitframe.com");
+            });
+        });
+
+        /* listen for the return message once the tweet has been loaded */
+        $(window).bind("message", function (e) {
+            var oe = e.originalEvent;
+            if (oe.origin != "https://twitframe.com") return;
+
+            if (oe.data.height && oe.data.element.match(/^tweet_/)) $("#" + oe.data.element).css("height", parseInt(oe.data.height) + "px");
+        });
+    </script>
+</html>

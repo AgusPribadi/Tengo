@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import CoffeeShop, GambarLowongan
+from .models import CoffeeShop, GambarLowongan, Subscription, Lokasi, Recommendation
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import send_mail
-from .models import Subscription, Lokasi
 import random
 
 def index(request):
@@ -12,7 +11,7 @@ def index(request):
 
 def home(request):
     query = request.GET.get('q')
-    lokasi_id = request.GET.get('lokasi')  # Mendapatkan ID lokasi yang dipilih
+    lokasi_id = request.GET.get('lokasi')
 
     coffee_shops = CoffeeShop.objects.all()
 
@@ -47,12 +46,19 @@ def detail_coffeeshop(request, slug):
 def about(request):
     return render(request, 'about.html')
 
+def disclaimer(request):
+    return render(request, 'disclaimer.html')
+
 def not_found(request, exception):
     return render(request, '404.html')
 
 def gambar_lowongan(request):
     gambar_lowongan = GambarLowongan.objects.all()
     return render(request, 'gambar_lowongan.html', {'gambar_lowongan': gambar_lowongan})
+
+def recommendation(request):
+    recommendations = Recommendation.objects.all()
+    return render(request, 'recommendation.html', {'recommendations': recommendations})
 
 def subscribe(request):
     if request.method == 'POST':
