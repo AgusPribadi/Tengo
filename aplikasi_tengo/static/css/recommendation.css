@@ -14,6 +14,15 @@ body {
     text-align: center;
 }
 
+/* CSS untuk frame Twitter dengan tinggi tertentu */
+.twitter-frame {
+    height: 350px; /* Atur tinggi frame sesuai kebutuhan */
+    width: 100%; /* Agar frame mengikuti lebar container */
+    max-width: 550px; /* Batasi lebar maksimum frame */
+    margin: 0 auto; /* Menengahkan frame di dalam container */
+    display: block; /* Menghilangkan whitespace di sekitar frame */
+}
+
 /* CSS untuk responsif di perangkat mobile */
 @media (max-width: 767px) {
     iframe {
