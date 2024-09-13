@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tengo | Login</title>
+        <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+
+        <div class="container">
+            <h2 class="my-4 bold-text text-center text-white">Login</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group text-white">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan username" required>
+                </div>
+                <div class="form-group text-white">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+
+            <div class="text-center mt-3 text-white">
+                <p>Belum punya akun? <a href="{% url 'register' %}">Daftar disini</a></p>
+            </div>
+        </div>
+
+        <!-- Link ke Bootstrap JavaScript dan jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

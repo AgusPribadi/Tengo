@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peta Coffee Shop - Tengo</title>
+    <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="container my-4">
+      <h2 class="text-white text-center mb-4">Peta Tempat Ngopi di Pontianak</h2>
+      <div id="mapid" style="height: 500px"></div>
+    </div>
+
+    <!-- Script untuk menampilkan peta menggunakan Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      // Pusatkan peta pada Pontianak dengan zoom level 13
+      var map = L.map('mapid').setView([-0.0263, 109.3425], 13);
+
+      // Gunakan tile dari OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Definisikan icon kustom untuk marker
+      var tengoIcon = L.icon({
+          iconUrl: '{% static 'img/tengo-icon.ico' %}',
+          iconSize: [32, 32], // Ukuran icon
+          iconAnchor: [16, 32], // Titik anchor icon
+          popupAnchor: [0, -32] // Titik anchor popup
+      });
+
+      // Tambahkan marker untuk setiap coffee shop yang ada di database
+      {% for shop in coffee_shops %}
+      L.marker([{{ shop.latitude }}, {{ shop.longitude }}], {icon: tengoIcon}).addTo(map)
+          .bindPopup("<b>{{ shop.nama }}</b><br>{{ shop.alamat }}");
+      {% endfor %}
+    </script>
+
+    <!-- Link ke Bootstrap JavaScript dan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

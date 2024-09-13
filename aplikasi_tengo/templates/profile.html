@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Profile | Tengo</title>
+        <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        
+        <div class="container mt-5">
+            <h2 class="my-4 bold-text text-center text-white">Profil Pengguna</h2>
+            
+            <div class="text-center">
+                <!-- Membuat gambar avatar responsive dan bulat -->
+                <img src="{{ profile.avatar.url }}" alt="{{ profile.user.username }}'s avatar" class="img-fluid" style="max-width: 150px; border-radius: 50%;">
+            </div>
+
+            <div class="profile-info text-center mt-3 text-white">
+                <p><strong>Username:</strong> {{ profile.user.username }}</p>
+                <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-2">Edit Profil</a>
+            </div>
+
+            <div class="col-md-6 mt-5">
+                <h3 class="text-white">Coffee Shop yang Telah Dikunjungi</h3>
+                <ul class="list-group">
+                    {% for shop in visited_shops %}
+                        <li class="list-group-item">
+                            <strong>{{ shop.nama }}</strong><br />
+                            
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">Belum ada coffee shop yang dikunjungi.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-md-6 mt-5">
+                <h3 class="text-white">Coffee Shop yang Akan Dikunjungi</h3>
+                <ul class="list-group">
+                    {% for shop in visit_later_shops %}
+                        <li class="list-group-item">
+                            <strong>{{ shop.nama }}</strong><br />
+                           
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">Tidak ada coffee shop yang akan dikunjungi.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Link ke Bootstrap JavaScript dan jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

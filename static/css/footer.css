@@ -1,0 +1,111 @@
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer-top {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-headline h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-headline p {
+    margin-bottom: 10px;
+}
+
+.footer-columns li a {
+    color: #ffffff80;
+}
+
+.footer-subscribe input[type="email"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.footer-subscribe button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for the footer columns */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-columns section {
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-columns h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-columns ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-columns li {
+    margin-bottom: 5px;
+}
+
+.social-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.social-links li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #999;
+}
+
+/* Tampilan mobile */
+@media screen and (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .footer-columns section {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .social-links li {
+        margin-right: 10px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+}

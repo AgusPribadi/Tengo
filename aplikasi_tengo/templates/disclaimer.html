@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+        <title>Disclaimer - Tengo</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+
+        <div class="container">
+            <h1 class="my-4 bold-text text-center text-white">Disclaimer</h1>
+            
+            <p class="lead text-white">
+                Website ini menyediakan informasi tentang tempat-tempat ngopi yang didapatkan dari berbagai sumber di internet dan media sosial masing-masing tempat. Tengo berusaha untuk menyajikan informasi yang akurat dan terbaru, namun Tengo tidak dapat menjamin keakuratan atau kelengkapan informasi yang Tengo sajikan.
+            </p>
+            <p class="lead text-white">
+                Tengo tidak memiliki afiliasi dengan tempat-tempat ngopi yang Tengo informasikan di website ini. Semua keputusan yang Kamu buat berdasarkan informasi yang Tengo sediakan adalah tanggung jawab Kamu. Tengo tidak bertanggung jawab atas kerugian atau kerusakan yang timbul akibat penggunaan informasi dari website ini.
+            </p>
+            <p class="lead text-white">Terima kasih atas kunjungannya.</p>
+            <p class="lead text-white">Tengo</p>
+        </div>
+
+        <!-- Link ke Bootstrap JavaScript dan jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
