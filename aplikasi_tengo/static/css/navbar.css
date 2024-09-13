@@ -32,8 +32,11 @@
         display: none;
     }
 }
+<<<<<<< HEAD
 
 .avatar {
     object-fit: cover;
     border-radius: 50%;
 }
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1

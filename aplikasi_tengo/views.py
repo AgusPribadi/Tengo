@@ -1,19 +1,29 @@
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import CoffeeShop, GambarLowongan, Subscription, Lokasi, Recommendation, VisitStatus, UserProfile
+=======
+from django.shortcuts import render, get_object_or_404
+from .models import CoffeeShop, GambarLowongan, Subscription, Lokasi, Recommendation
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import send_mail
+<<<<<<< HEAD
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from django.contrib.auth.models import User
+=======
+import random
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 
 def index(request):
     return render(request, 'index.html')
 
+<<<<<<< HEAD
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -74,6 +84,8 @@ def edit_profile(request):
     return render(request, 'edit_profile.html', {'form': form})
 
 @login_required
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 def home(request):
     query = request.GET.get('q')
     lokasi_id = request.GET.get('lokasi')
@@ -94,14 +106,23 @@ def home(request):
 
     return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops, 'locations': locations})
 
+<<<<<<< HEAD
 @login_required
 def filtered_location(request, location_id):
     selected_location = get_object_or_404(Lokasi, pk=location_id)
+=======
+
+def filtered_location(request, location_id):
+    selected_location = Lokasi.objects.get(pk=location_id)
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
     coffee_shops = CoffeeShop.objects.filter(lokasi=selected_location)
 
     return render(request, 'home.html', {'coffee_shops': coffee_shops})
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 def detail_coffeeshop(request, slug):
     coffee_shop = get_object_or_404(CoffeeShop, slug=slug)
     context = {
@@ -109,6 +130,7 @@ def detail_coffeeshop(request, slug):
     }
     return render(request, 'detail_coffeeshop.html', context)
 
+<<<<<<< HEAD
 @login_required
 def about(request):
     return render(request, 'about.html')
@@ -122,16 +144,33 @@ def not_found(request, exception):
     return render(request, '404.html')
 
 @login_required
+=======
+def about(request):
+    return render(request, 'about.html')
+
+def disclaimer(request):
+    return render(request, 'disclaimer.html')
+
+def not_found(request, exception):
+    return render(request, '404.html')
+
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 def gambar_lowongan(request):
     gambar_lowongan = GambarLowongan.objects.all()
     return render(request, 'gambar_lowongan.html', {'gambar_lowongan': gambar_lowongan})
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 def recommendation(request):
     recommendations = Recommendation.objects.all()
     return render(request, 'recommendation.html', {'recommendations': recommendations})
 
+<<<<<<< HEAD
 @login_required
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -154,6 +193,7 @@ def subscribe(request):
     
     return render(request, 'footer.html')
 
+<<<<<<< HEAD
 @login_required
 def success(request):
     return render(request, 'success.html')
@@ -179,3 +219,7 @@ def save_visit_status(request, coffee_shop_id, status):
 
     messages.success(request, f'Status kunjungan untuk {coffee_shop.nama} berhasil diperbarui')
     return redirect('detail_coffeeshop', slug=coffee_shop.slug)
+=======
+def success(request):
+    return render(request, 'success.html')
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1

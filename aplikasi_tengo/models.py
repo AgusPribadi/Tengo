@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 from django.conf import settings
 
 class UserProfile(models.Model):
@@ -9,18 +10,25 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 
 class CoffeeShop(models.Model):
     nama = models.CharField(max_length=200)
     alamat = models.TextField()
     jam_buka = models.CharField(max_length=50)
     contact = models.CharField(max_length=50)
+<<<<<<< HEAD
+=======
+    review = models.TextField()
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
     gallery = models.ImageField(upload_to='coffeeshop_gallery')
     instagram_url = models.URLField(max_length=200, null=True, blank=True)
     tiktok_url = models.URLField(max_length=200, null=True, blank=True)
     google_maps_url = models.URLField(blank=True, null=True)
     tags = models.ManyToManyField('CoffeeShopTag', blank=True)
     slug = models.SlugField(unique=True, blank=True)
+<<<<<<< HEAD
     lokasi = models.ManyToManyField('Lokasi')
     fasilitas = models.ManyToManyField('Fasilitas', blank=True)
     menu_images = models.ManyToManyField('MenuImage', blank=True, related_name='coffee_shops')
@@ -28,6 +36,11 @@ class CoffeeShop(models.Model):
     # Field baru untuk menyimpan koordinat lokasi coffee shop
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+=======
+    menu = models.URLField(max_length=200, null=True, blank=True)
+    lokasi = models.ManyToManyField('Lokasi')
+    fasilitas = models.ManyToManyField('Fasilitas', blank=True)
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -37,6 +50,7 @@ class CoffeeShop(models.Model):
     def __str__(self):
         return self.nama
 
+<<<<<<< HEAD
 class MenuImage(models.Model):
     coffee_shop = models.ForeignKey(CoffeeShop, related_name='menu_images_related', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='menu_images/')
@@ -44,6 +58,8 @@ class MenuImage(models.Model):
     def __str__(self):
         return f"{self.coffee_shop.nama} - Menu Image"
 
+=======
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 class Fasilitas(models.Model):
     MUSHOLLA = 'Musholla'
     AC = 'AC'
@@ -100,6 +116,7 @@ class Recommendation(models.Model):
     description = models.TextField()
 
     def __str__(self):
+<<<<<<< HEAD
         return self.description
 
 class VisitStatus(models.Model):
@@ -117,3 +134,6 @@ class VisitStatus(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.coffee_shop.nama} - {self.get_status_display()}"
+=======
+        return self.description
+>>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
