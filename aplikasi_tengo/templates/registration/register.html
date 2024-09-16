@@ -1,47 +1,64 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tengo | Register</title>
-        <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-    </head>
-    <body>
-        {% include 'navbar.html' %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tengo | Register</title>
+    <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
 
-        <div class="container">
-            <h2 class="my-4 bold-text text-center text-white">Daftar Akun Baru</h2>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+      <div class="w-50">
+        <h2 class="my-4 bold-text text-center text-white">Daftar Akun Baru</h2>
 
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-group text-white">
-                    {{ form.username.label_tag }}
-                    {{ form.username }}
-                </div>
-                <div class="form-group text-white">
-                    {{ form.password1.label_tag }}
-                    {{ form.password1 }}
-                </div>
-                <div class="form-group text-white">
-                    {{ form.password2.label_tag }}
-                    {{ form.password2 }}
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Daftar</button>
-            </form>
-
-            <div class="text-center mt-3">
-                <p>Sudah punya akun? <a href="{% url 'login' %}">Login disini</a></p>
-            </div>
+        <!-- Menampilkan pesan -->
+        {% if messages %}
+        <div class="container mt-3">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
         </div>
+        {% endif %}
+        <!-- End Menampilkan Pesan -->
 
-        <!-- Link ke Bootstrap JavaScript dan jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group text-white">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan username" required />
+          </div>
+          <div class="form-group text-white">
+            <label for="password1">Password</label>
+            <input type="password" name="password1" class="form-control" id="password1" placeholder="Masukkan password" required />
+          </div>
+          <div class="form-group text-white">
+            <label for="password2">Ulangi Password</label>
+            <input type="password" name="password2" class="form-control" id="password2" placeholder="Ulangi password" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+        </form>
+
+        <div class="text-center mt-3 text-white">
+          <p>Sudah punya akun? <a href="{% url 'login' %}">Login disini</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link ke Bootstrap JavaScript dan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

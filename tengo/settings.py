@@ -120,7 +120,6 @@ EMAIL_HOST_USER = 'hitengo2023@gmail.com'
 EMAIL_HOST_PASSWORD = 'selllbznznwcdoow'
 
 
-<<<<<<< HEAD
 DISQUS_WEBSITE_SHORTNAME = 'tengo2023'
 
 
@@ -128,6 +127,3 @@ DISQUS_WEBSITE_SHORTNAME = 'tengo2023'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
-=======
-DISQUS_WEBSITE_SHORTNAME = 'tengo2023'
->>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1

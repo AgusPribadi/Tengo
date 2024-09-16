@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -151,6 +150,7 @@
   </head>
   <body>
     {% include 'navbar.html' %}
+
     <!-- Menampilkan pesan -->
     {% if messages %}
     <div class="container mt-3">
@@ -164,6 +164,8 @@
       {% endfor %}
     </div>
     {% endif %}
+    <!-- End Menampilkan Pesan -->
+
     <div class="container">
       <h1 class="my-4">{{ coffee_shop.nama }}</h1>
       <div class="row">
@@ -254,7 +256,7 @@
         <!-- End Section Save Visit Status -->
 
         <!-- Section Cocok -->
-        <div class="col-md-8 cocok-untuk">
+        <div class="col-md-8 mt-2 cocok-untuk">
           <h2>Cocok untuk:</h2>
           <div class="row">
             <div class="col-md-8">
@@ -284,8 +286,30 @@
             </div>
             <!-- End Menu Section -->
 
+            <!-- Section Metode Pembayaran -->
+            <div class="col-md-8 mt-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Metode Pembayaran</h5>
+                  {% if coffee_shop.metode_pembayaran.all %}
+                  <ul>
+                    {% for metode in coffee_shop.metode_pembayaran.all %}
+                    <li class="card-title">
+                      {% if metode.nama_metode == "Cash" %}
+                      <i class="fas fa-money-bill-wave"></i> {{ metode.nama_metode }} {% elif metode.nama_metode == "QRIS" %} <i class="fas fa-qrcode"></i> {{ metode.nama_metode }} {% else %} {{ metode.nama_metode }} {% endif %}
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  {% else %}
+                  <p class="card-text">Belum ada informasi metode pembayaran.</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <!-- End Section Metode Pembayaran -->
+
             <!-- Embed Instagram -->
-            <div class="col-md-8">
+            <div class="col-md-8 mt-4">
               <div class="instagram-embed">
                 <iframe src="{{ coffee_shop.instagram_url }}embed/" width="320" height="320" frameborder="0" scrolling="no"></iframe>
               </div>
@@ -351,323 +375,4 @@
     </script>
     <!-- End CDN Javascript -->
   </body>
-=======
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tengo - Detail Tengo</title>
-
-        <!-- Open Graph Protocol (OGP) -->
-        <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="{{ coffee_shop.nama }}" />
-        <meta property="og:description" content="{{ coffee_shop.deskripsi }}" />
-        <meta property="og:image" content="{{ coffee_shop.gambar_url }}" />
-
-        <!-- Favicon -->
-        <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
-
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-        <!-- CDN Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-        <!-- Link CSS -->
-        <link rel="stylesheet" href="{% static 'css/detail_coffeeshop.css' %}" />
-
-        <!-- CDN Light Gallery -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css" />
-        <style>
-            .cocok-untuk .card-title {
-                color: #111;
-            }
-
-            .gallery-images {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .gallery-images a {
-                display: block;
-                width: calc(33.33% - 10px);
-                max-width: 100%;
-                border-radius: 10px;
-                overflow: hidden;
-            }
-
-            .gallery-images img {
-                width: 100%;
-                height: auto;
-                transition: transform 0.2s ease-in-out;
-            }
-
-            .gallery-images a:hover img {
-                transform: scale(1.05);
-            }
-
-            .cocok-untuk .col-md-4 {
-                margin-top: 10px;
-            }
-
-            .instagram-embed {
-                border-radius: 20px;
-                overflow: hidden;
-                width: 320px;
-                height: 320px;
-            }
-
-            .instagram-embed iframe {
-                width: 100%;
-                height: 100%;
-            }
-
-            /* Responsif untuk tampilan mobile */
-            @media (max-width: 767px) {
-                .gallery-images a {
-                    width: 100%;
-                }
-
-                .btn {
-                    margin: 0;
-                    width: 100%;
-                    margin: 5px 0;
-                }
-
-                .cocok-untuk .col-md-8:nth-child(3) {
-                    width: 100%;
-                    margin-top: 20px;
-                    text-align: center; /* Menengahkan elemen di dalam parent container */
-                }
-
-                .instagram-embed {
-                    max-width: 100%;
-                    width: 100%; /* Mengatur lebar elemen agar tidak terlalu besar */
-                    height: 101%;
-                    padding-bottom: 80%; /* Memberi aspek rasio pada elemen */
-                    position: relative;
-                    margin: 20px auto 40px; /* Menengahkan elemen di layar dan memberikan jarak ke bawah */
-                }
-
-                .instagram-embed iframe {
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-
-                /* Atau Anda juga bisa memberikan margin-bottom pada tombol "Gasss ke sana" */
-                .col-md-8 > .btn {
-                    margin-bottom: 20px; /* Atur jarak antara tombol dan embed Instagram */
-                }
-            }
-
-            /* CSS untuk card fasilitas */
-            .facilities-card {
-                background-color: #f8f9fa; /* Warna latar belakang card */
-                border: 1px solid #dee2e6; /* Garis pinggir card */
-                border-radius: 10px; /* Sudut bulat card */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek depth */
-            }
-
-            .facilities-card .card-title {
-                color: #212529; /* Warna teks judul card */
-            }
-
-            .facilities-card .list-unstyled {
-                padding-left: 20px; /* Padding kiri untuk daftar fasilitas */
-            }
-
-            .facilities-card .list-unstyled li {
-                list-style: none; /* Hilangkan tanda bullet pada daftar fasilitas */
-                margin-bottom: 5px; /* Ruang antara setiap item daftar */
-            }
-
-            .facilities-card .list-unstyled li i {
-                color: #28a745; /* Warna ikon */
-                margin-right: 5px; /* Ruang antara ikon dan teks */
-            }
-
-            /* Ubah warna teks untuk daftar fasilitas */
-            .facilities-card .list-unstyled li {
-                color: #000000; /* Warna teks untuk daftar fasilitas */
-            }
-        </style>
-    </head>
-    <body>
-        {% include 'navbar.html' %}
-        <div class="container">
-            <h1 class="my-4">{{ coffee_shop.nama }}</h1>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card coffee-card">
-                        <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
-                        <div class="card-body">
-                            <h5 class="card-title">{{ coffee_shop.nama }}</h5>
-                            <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
-                            <p class="card-text">
-                                <strong>Jam Buka:</strong>
-                                {% if coffee_shop.jam_buka == "24 Jam" %}
-                                <strong><span style="color: #00ff00">{{ coffee_shop.jam_buka }}</span></strong>
-                                {% else %} {{ coffee_shop.jam_buka }} {% endif %}
-                            </p>
-                            <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
-                            <p class="card-text"><strong>Review:</strong> {{ coffee_shop.review }}</p>
-                            {% if coffee_shop.instagram_url %}
-                            <div class="social-media">
-                                <a href="{{ coffee_shop.instagram_url }}" target="_blank" class="instagram-icon">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                {% if coffee_shop.tiktok_url %}
-                                <a href="{{ coffee_shop.tiktok_url }}" target="_blank" class="tiktok-icon">
-                                    <i class="fa-brands fa-tiktok"></i>
-                                </a>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    {% if coffee_shop.images.all %}
-                    <div class="image-galleries">
-                        <h2>Galeri Gambar</h2>
-                        <div class="gallery-images">
-                            {% for image in coffee_shop.images.all %}
-                            <a href="{{ image.image.url }}" target="_blank">
-                                <img src="{{ image.image.url }}" alt="{{ coffee_shop.nama }}" />
-                            </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="col-md-8 mt-4">
-                    <div class="card facilities-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Fasilitas</h5>
-                            {% if coffee_shop.fasilitas.all %}
-                            <ul class="list-unstyled">
-                                {% for fasilitas in coffee_shop.fasilitas.all %}
-                                <li>
-                                    {% if fasilitas.nama_fasilitas == "Musholla" %}
-                                    <i class="fas fa-mosque"></i>
-                                    <!-- Font Awesome icon for Musholla -->
-                                    {% elif fasilitas.nama_fasilitas == "AC" %}
-                                    <i class="fas fa-snowflake"></i>
-                                    <!-- Font Awesome icon for AC -->
-                                    {% elif fasilitas.nama_fasilitas == "VIP Room" %}
-                                    <i class="fas fa-crown"></i>
-                                    <!-- Font Awesome icon for VIP Room -->
-                                    {% elif fasilitas.nama_fasilitas == "Permainan" %}
-                                    <i class="fas fa-gamepad"></i>
-                                    <!-- Font Awesome icon for Permainan -->
-                                    {% else %}
-                                    <i class="fas fa-check"></i>
-                                    <!-- Default Font Awesome icon -->
-                                    {% endif %} {{ fasilitas.nama_fasilitas }}
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            {% else %}
-                            <p class="card-text">Belum ada informasi tentang fasilitas yang tersedia.</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8 cocok-untuk">
-                    <h2>Cocok untuk:</h2>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="card tag-card">
-                                <div class="card-body">
-                                    <h6 class="card-title">{% for tag in coffee_shop.tags.all %} {{ tag.tag_name }}{% if not forloop.last %}, {% endif %} {% endfor %}</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Menu</h5>
-                                    {% if coffee_shop.menu %}
-                                    <a href="{{ coffee_shop.menu }}" class="btn btn-secondary" target="_blank">Lihat Menu</a>
-                                    {% else %}
-                                    <p class="card-text"><strong>Menu:</strong> Belum Tersedia</p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Embed Instagram -->
-                        <div class="col-md-8">
-                            <div class="instagram-embed">
-                                <iframe src="{{ coffee_shop.instagram_url }}embed/" width="320" height="320" frameborder="0" scrolling="no"></iframe>
-                            </div>
-                        </div>
-                        <!-- End Embed Instagram -->
-                    </div>
-                </div>
-
-                <!-- Gasss ke sana -->
-                <div class="col-md-8">
-                    <br />
-                    {% if coffee_shop.google_maps_url %}
-                    <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Gasss ke sana</a>
-                    {% endif %}
-                </div>
-                <!-- End Gasss ke sana -->
-
-                <!-- Tautan Berbagi -->
-                <div class="card-body">
-                    <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success"> Bagikan ke WhatsApp </a>
-                    <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary"> Bagikan ke Facebook </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagikan ke Twitter </a>
-                </div>
-                <!-- End Tautan Berbagi -->
-            </div>
-
-            <!-- Disqus -->
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = "{{ request.build_absolute_uri }}";
-                    this.page.identifier = "{{ coffee_shop.id }}";
-                };
-                (function () {
-                    var d = document,
-                        s = d.createElement("script");
-                    s.src = "https://tengo2023.disqus.com/embed.js";
-                    s.setAttribute("data-timestamp", +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a> </noscript>
-            <!-- End Disqus -->
-        </div>
-        {% include 'footer.html' %}
-
-        <!-- Sesi CDN Javascript -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/lg-thumbnail@1.1.0/dist/lg-thumbnail.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $(".gallery-images").lightGallery({
-                    mode: "lg-slide",
-                    speed: 600,
-                    download: false,
-                    thumbnail: true,
-                });
-            });
-        </script>
-        <!-- End CDN Javascript -->
-    </body>
->>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1
 </html>
