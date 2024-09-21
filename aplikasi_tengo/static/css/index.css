@@ -10,230 +10,268 @@ p,
 ul,
 li,
 form {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form .form-group {
+  width: 100%; /* Sesuaikan dengan ukuran kontainer */
+}
+
+form input,
+form textarea {
+  width: 100%; /* Agar input dan textarea memenuhi lebar form */
+  padding: 10px;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #ff5722;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #ff784e;
 }
 
 body {
-    font-family: "Poppins", Arial, sans-serif;
-    line-height: 1.6;
-    font-weight: 400;
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 header {
-    font-family: "Poppins", Arial, sans-serif;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
 .logo {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 nav {
-    font-family: "Poppins", Arial, sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  font-family: "Poppins", Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-size: 25px;
 }
 
 .nav-links {
-    list-style: none;
+  list-style: none;
 }
 
 .nav-links li {
-    display: inline-block;
-    margin-left: 1rem;
+  display: inline-block;
+  margin-left: 1rem;
 }
 
 .nav-links li a {
-    color: #333;
-    text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
 .hero {
-    font-family: "Poppins", Arial, sans-serif;
-    text-align: center;
-    background-color: #f5f5f5;
-    padding: 3rem 0;
+  font-family: "Poppins", Arial, sans-serif;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 3rem 0;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #333;
-    font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 700;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
 }
 
 .cta-btn {
-    font-family: "Poppins", Arial, sans-serif;
-    font-weight: 700;
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #ff5722;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #ff5722;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .cta-btn:hover {
-    background-color: #ff784e;
-    transform: scale(1.05);
+  background-color: #ff784e;
+  transform: scale(1.05);
 }
 
 /* Features Section */
 .features {
-    font-family: "Poppins", Arial, sans-serif;
-    text-align: center;
-    padding: 3rem 0;
-    background-color: #f9f9f9;
+  font-family: "Poppins", Arial, sans-serif;
+  text-align: center;
+  padding: 3rem 0;
+  background-color: #f9f9f9;
 }
 
 .features h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-    font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 700;
 }
 
 .feature-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .feature-card img {
-    width: 150px;
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+  width: 150px;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .feature-card img:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .feature-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #333;
-    font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 700;
 }
 
 .feature-card p {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 300px;
-    text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 300px;
+  text-align: center;
 }
 
 /* About Section */
 .about {
-    font-family: "Poppins", Arial, sans-serif;
-    text-align: center;
-    padding: 3rem 0;
-    background-color: #f5f5f5;
+  font-family: "Poppins", Arial, sans-serif;
+  text-align: center;
+  padding: 3rem 0;
+  background-color: #f5f5f5;
 }
 
 .about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-    font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 700;
 }
 
 .about-content {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* Contact Section */
 .contact {
-    font-family: "Poppins", Arial, sans-serif;
-    text-align: center;
-    padding: 3rem 0;
+  font-family: "Poppins", Arial, sans-serif;
+  text-align: center;
+  padding: 3rem 0;
 }
 
 .contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-    font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 700;
 }
 
 .contact form {
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contact form input,
 .contact form textarea {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .contact form button {
-    padding: 1rem 2rem;
-    background-color: #ad4d2f;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 1rem 2rem;
+  background-color: #646262;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .contact form button:hover {
-    background-color: #ff784e;
-    transform: translateY(-2px);
+  background-color: #373232;
+  transform: translateY(-2px);
+  color: #fff;
 }
 
 /* Footer */
 footer {
-    font-family: "Poppins", Arial, sans-serif;
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #333;
-    color: #fff;
+  font-family: "Poppins", Arial, sans-serif;
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #333;
+  color: #fff;
 }
 
 footer p {
-    margin: 0;
+  margin: 0;
 }
 
 .jumbotron {
-    color: white;
-    width: 100%;
-    height: 300px;
-    position: relative;
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
+  color: white;
+  width: 100%;
+  height: 300px;
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 3rem 0;
 }
 
 .jumbotron-bg {
-    background-image: url("../1.jpg");
-    background-size: cover;
-    background-position: center center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  background-image: url("../1.jpg");
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
