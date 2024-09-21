@@ -1,0 +1,121 @@
+/* ----- Navbar ----- */
+.navbar {
+  padding: 10px 15px; /* Mengurangi padding agar tidak terlalu besar */
+  background-color: #111; /* Sesuaikan warna latar belakang */
+}
+
+.navbar-brand {
+  font-size: 1.2rem; /* Ukuran font untuk brand */
+  color: white; /* Warna teks */
+}
+
+.navbar-nav .nav-link {
+  padding: 5px 10px; /* Mengatur padding untuk link */
+  color: white; /* Warna teks untuk link */
+  font-size: 1rem; /* Ukuran font */
+}
+
+/* Untuk menghilangkan border pada toggle button di mobile */
+.navbar-toggler {
+  border: none;
+}
+/* ----- End Navbar ----- */
+
+/* Mengatur tampilan container agar rapi */
+.container {
+  padding: 20px;
+}
+
+/* Gaya Umum */
+body {
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background-color: #111;
+}
+
+h1 {
+  color: white;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+/* Gaya Form Pendaftaran */
+.w-50 {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparan */
+  padding: 12px;
+  border-radius: 10px;
+}
+
+/* Gaya input dan label pada form */
+.form-group label {
+  color: #fff;
+}
+
+.form-group input {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Gaya tombol daftar */
+button.btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+button.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Link dalam form */
+a {
+  color: #007bff;
+}
+
+/* Media query untuk perangkat mobile */
+@media (max-width: 576px) {
+  body {
+    padding: 10px; /* Mengurangi padding di body */
+  }
+
+  .w-50 {
+    width: 100%; /* Membuat form 100% lebar pada perangkat kecil */
+    padding: 15px; /* Menambahkan padding yang lebih nyaman */
+    margin: 0; /* Menghilangkan margin agar penuh */
+  }
+
+  button.btn {
+    padding: 12px; /* Memperbesar area klik pada tombol */
+  }
+
+  /* Ukuran font dalam form */
+  .form-group label,
+  .form-group input,
+  button.btn {
+    font-size: 1rem; /* Ukuran font lebih besar untuk mudah dibaca */
+  }
+
+  /* Mengatur navbar agar lebih ringkas */
+  .navbar {
+    padding: 10px; /* Mengurangi padding pada navbar */
+  }
+
+  a {
+    font-size: 0.9rem; /* Ukuran font lebih kecil untuk link */
+  }
+}
