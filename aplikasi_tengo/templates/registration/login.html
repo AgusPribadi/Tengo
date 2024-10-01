@@ -14,24 +14,23 @@
   <body>
     {% include 'navbar.html' %}
 
+    <!-- Menampilkan pesan -->
+    {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <!-- End Menampilkan Pesan -->
     <div class="container d-flex justify-content-center align-items-center">
       <div class="w-50">
         <h2 class="my-4 bold-text text-center text-white">Login</h2>
-
-        <!-- Menampilkan pesan -->
-        {% if messages %}
-        <div class="container mt-3">
-          {% for message in messages %}
-          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <!-- End Menampilkan Pesan -->
 
         <form method="POST">
           {% csrf_token %}

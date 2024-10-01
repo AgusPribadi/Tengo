@@ -112,6 +112,15 @@ a {
     font-size: 1rem; /* Ukuran font lebih besar untuk mudah dibaca */
   }
 
+  .alert {
+    font-size: 0.9rem; /* Lebih kecil lagi di perangkat sangat kecil */
+    padding: 10px; /* Mengurangi padding untuk menghemat ruang */
+  }
+
+  .alert .close {
+    font-size: 1.2rem; /* Memperbesar ukuran tombol tutup */
+  }
+
   /* Mengatur navbar agar lebih ringkas */
   .navbar {
     padding: 10px; /* Mengurangi padding pada navbar */
