@@ -33,3 +33,8 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['avatar']

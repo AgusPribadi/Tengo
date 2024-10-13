@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     CoffeeShop, CoffeeShopTag, CoffeeShopImage, GambarLowongan, 
     Subscription, Lokasi, Fasilitas, Recommendation, VisitStatus,
-    MenuImage, PaymentMethod
+    MenuImage, PaymentMethod,
 )
 from django.http import HttpResponse
 import csv
@@ -19,12 +19,12 @@ class CoffeeShopAdmin(admin.ModelAdmin):
     inlines = [CoffeeShopImageInline, MenuImageInline]
     actions = ['download_data_as_csv']
 
-    list_display = ['nama', 'alamat', 'latitude', 'longitude', 'contact', 'instagram_url', 'google_maps_url']
+    list_display = ['nama', 'alamat', 'latitude', 'longitude', 'contact', 'instagram_url', 'google_maps_url', 'tahun_berdiri']
 
     fields = [
         'nama', 'alamat', 'jam_buka', 'contact', 'gallery', 'instagram_url',
         'tiktok_url', 'google_maps_url', 'menu_images', 'latitude', 'longitude',
-        'lokasi', 'fasilitas', 'metode_pembayaran'  # Tambahkan metode_pembayaran
+        'lokasi', 'fasilitas', 'metode_pembayaran', 'tahun_berdiri'
     ]
 
     def download_data_as_csv(self, request, queryset):
@@ -35,7 +35,7 @@ class CoffeeShopAdmin(admin.ModelAdmin):
         writer.writerow([
             'Nomor', 'Nama', 'Alamat', 'Jam Buka', 'Kontak', 
             'Instagram URL', 'TikTok URL', 'Google Maps URL', 
-            'Menu', 'Latitude', 'Longitude', 'Metode Pembayaran'  # Tambahkan kolom metode_pembayaran
+            'Menu', 'Latitude', 'Longitude', 'Metode Pembayaran', 'tahun_berdiri'
         ])
 
         for index, coffee_shop in enumerate(queryset, start=1):
@@ -52,7 +52,8 @@ class CoffeeShopAdmin(admin.ModelAdmin):
                 coffee_shop.menu_images,
                 coffee_shop.latitude,
                 coffee_shop.longitude,
-                metode_pembayaran  # Menyimpan metode pembayaran dalam CSV
+                metode_pembayaran,
+                tahun_berdiri
             ])
 
         return response

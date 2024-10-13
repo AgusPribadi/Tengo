@@ -31,23 +31,23 @@
       </div>
 
       <div class="col-md-6 mt-5">
-        <h3 class="text-white">Coffee Shop yang Telah Dikunjungi</h3>
+        <h3 class="text-white">Tempat Ngopi yang Telah Dikunjungi</h3>
         <ul class="list-group">
           {% for shop in visited_shops %}
           <li class="list-group-item"><strong>{{ shop.nama }}</strong><br /></li>
           {% empty %}
-          <li class="list-group-item">Belum ada coffee shop yang dikunjungi.</li>
+          <li class="list-group-item">Belum ada Tempat Ngopi yang dikunjungi.</li>
           {% endfor %}
         </ul>
       </div>
 
       <div class="col-md-6 mt-5">
-        <h3 class="text-white">Coffee Shop yang Akan Dikunjungi</h3>
+        <h3 class="text-white">Tempat Ngopi yang Akan Dikunjungi</h3>
         <ul class="list-group">
           {% for shop in visit_later_shops %}
           <li class="list-group-item"><strong>{{ shop.nama }}</strong><br /></li>
           {% empty %}
-          <li class="list-group-item">Tidak ada coffee shop yang akan dikunjungi.</li>
+          <li class="list-group-item">Tidak ada Tempat Ngopi yang akan dikunjungi.</li>
           {% endfor %}
         </ul>
       </div>

@@ -10,7 +10,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-
 class CoffeeShop(models.Model):
     nama = models.CharField(max_length=200)
     alamat = models.TextField()
@@ -25,6 +24,7 @@ class CoffeeShop(models.Model):
     lokasi = models.ManyToManyField('Lokasi')
     fasilitas = models.ManyToManyField('Fasilitas', blank=True)
     menu_images = models.ManyToManyField('MenuImage', blank=True, related_name='coffee_shops')
+    tahun_berdiri = models.PositiveIntegerField(null=True, blank=True)
 
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)

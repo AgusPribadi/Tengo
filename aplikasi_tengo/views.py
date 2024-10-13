@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, UserProfileForm
 from .models import UserProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -86,7 +86,7 @@ def edit_profile(request):
         form = UserProfileForm(instance=request.user.userprofile)
     return render(request, 'edit_profile.html', {'form': form})
 
-@login_required
+
 def home(request):
     query = request.GET.get('q')
     lokasi_id = request.GET.get('lokasi')
@@ -107,14 +107,14 @@ def home(request):
 
     return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops, 'locations': locations})
 
-@login_required
+
 def filtered_location(request, location_id):
     selected_location = get_object_or_404(Lokasi, pk=location_id)
     coffee_shops = CoffeeShop.objects.filter(lokasi=selected_location)
 
     return render(request, 'home.html', {'coffee_shops': coffee_shops})
 
-@login_required
+
 def detail_coffeeshop(request, slug):
     coffee_shop = get_object_or_404(CoffeeShop, slug=slug)
     context = {
@@ -122,29 +122,29 @@ def detail_coffeeshop(request, slug):
     }
     return render(request, 'detail_coffeeshop.html', context)
 
-@login_required
+
 def about(request):
     return render(request, 'about.html')
 
-@login_required
+
 def disclaimer(request):
     return render(request, 'disclaimer.html')
 
-@login_required
+
 def not_found(request, exception):
     return render(request, '404.html')
 
-@login_required
+
 def gambar_lowongan(request):
     gambar_lowongan = GambarLowongan.objects.all()
     return render(request, 'gambar_lowongan.html', {'gambar_lowongan': gambar_lowongan})
 
-@login_required
+
 def recommendation(request):
     recommendations = Recommendation.objects.all()
     return render(request, 'recommendation.html', {'recommendations': recommendations})
 
-@login_required
+
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -167,11 +167,11 @@ def subscribe(request):
     
     return render(request, 'footer.html')
 
-@login_required
+
 def success(request):
     return render(request, 'success.html')
 
-@login_required
+
 def map_view(request):
     coffee_shops = CoffeeShop.objects.all()
     context = {'coffee_shops': coffee_shops}

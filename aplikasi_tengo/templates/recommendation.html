@@ -16,12 +16,16 @@
     {% include 'navbar.html' %}
     <div class="container">
       <h1>Recommendation</h1>
-      {% for recommendation in recommendations %}
-      <div class="frame-twitter">
-        <p>{{ recommendation.description }}</p>
-        <iframe class="twitter-frame" border="0" frameborder="0" src="https://twitframe.com/show?url={{ recommendation.tweet_url }}"></iframe>
+      <div class="row">
+        {% for recommendation in recommendations %}
+        <div class="col-md-4">
+          <div class="frame-twitter">
+            <p>{{ recommendation.description }}</p>
+            <iframe class="twitter-frame" border="0" frameborder="0" src="https://twitframe.com/show?url={{ recommendation.tweet_url }}"></iframe>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </body>
   <script>
