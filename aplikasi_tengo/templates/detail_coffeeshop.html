@@ -335,24 +335,6 @@
         </div>
         <!-- End Tautan Berbagi -->
       </div>
-
-      <!-- Disqus -->
-      <div id="disqus_thread"></div>
-      <script>
-        var disqus_config = function () {
-          this.page.url = "{{ request.build_absolute_uri }}";
-          this.page.identifier = "{{ coffee_shop.id }}";
-        };
-        (function () {
-          var d = document,
-            s = d.createElement("script");
-          s.src = "https://tengo2023.disqus.com/embed.js";
-          s.setAttribute("data-timestamp", +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-      <noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a> </noscript>
-      <!-- End Disqus -->
     </div>
     {% include 'footer.html' %}
 

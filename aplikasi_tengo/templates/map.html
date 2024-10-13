@@ -30,17 +30,9 @@
           attribution: '© OpenStreetMap contributors'
       }).addTo(map);
 
-      // Definisikan icon kustom untuk marker
-      var tengoIcon = L.icon({
-          iconUrl: '{% static 'img/tengo-icon.ico' %}',
-          iconSize: [32, 32], // Ukuran icon
-          iconAnchor: [16, 32], // Titik anchor icon
-          popupAnchor: [0, -32] // Titik anchor popup
-      });
-
       // Tambahkan marker untuk setiap coffee shop yang ada di database
       {% for shop in coffee_shops %}
-      L.marker([{{ shop.latitude }}, {{ shop.longitude }}], {icon: tengoIcon}).addTo(map)
+      L.marker([{{ shop.latitude }}, {{ shop.longitude }}]).addTo(map)
           .bindPopup("<b>{{ shop.nama }}</b><br>{{ shop.alamat }}");
       {% endfor %}
     </script>

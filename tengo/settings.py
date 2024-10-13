@@ -119,11 +119,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hitengo2023@gmail.com'
 EMAIL_HOST_PASSWORD = 'selllbznznwcdoow'
 
-
-DISQUS_WEBSITE_SHORTNAME = 'tengo2023'
-
-
-
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'

@@ -8,41 +8,48 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserProfileForm
+from django.contrib.auth.models import User
+from .forms import CustomUserCreationForm
+from .models import UserProfile
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 def index(request):
     return render(request, 'index.html')
 
-from .models import UserProfile
-
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()  # Simpan pengguna baru
             username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             
             # Membuat profil secara otomatis untuk pengguna baru
             UserProfile.objects.create(user=user)
             
-            messages.success(request, f'Akun berhasil dibuat untuk {username}! Silakan login untuk melanjutkan.')
+            messages.success(request, f'Akun berhasil dibuat untuk {username} dengan email {email}! Silakan login untuk melanjutkan.')
             return redirect('login')  # Alihkan ke halaman login
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        email = request.POST.get('email')  # Mengambil email dari form
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        try:
+            user = User.objects.get(email=email)
+            user = authenticate(request, username=user.username, password=password)  # Autentikasi dengan username dari email
+        except User.DoesNotExist:
+            user = None
+        
         if user is not None:
             login(request, user)
             messages.success(request, 'Kamu berhasil masuk!')
             return redirect('home')
         else:
-            messages.error(request, 'Username atau password salah.')
+            messages.error(request, 'Email atau password salah.')
     return render(request, 'registration/login.html')
 
 def logout_view(request):
