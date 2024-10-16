@@ -13,6 +13,9 @@ from .forms import CustomUserCreationForm, UserProfileForm
 from .models import UserProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.views.generic import View
+from django.conf import settings
 
 def index(request):
     return render(request, 'index.html')
@@ -192,3 +195,14 @@ def save_visit_status(request, coffee_shop_id, status):
 
     messages.success(request, f'Status kunjungan untuk {coffee_shop.nama} berhasil diperbarui')
     return redirect('detail_coffeeshop', slug=coffee_shop.slug)
+
+class RobotsView(View):
+    def get(self, request, *args, **kwargs):
+        sitemap_url = f"{request.scheme}://{request.get_host()}/sitemap.xml"
+        content = f"""
+        User-agent: *
+        Disallow:
+
+        Sitemap: {sitemap_url}
+        """
+        return HttpResponse(content, content_type="text/plain")
