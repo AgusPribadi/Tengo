@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Coffee Shops{% endblock %}</title>
+    <meta name="description" content="{% block description %}Platform rekomendasi Tempat Ngopi terbaik di kota kamu.{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}coffee shop, cafe, tempat ngopi, Pontianak, rekomendasi cafe{% endblock %}" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    {% block content %}
+    <!-- Konten halaman di sini -->
+    {% endblock %}
+  </body>
+</html>

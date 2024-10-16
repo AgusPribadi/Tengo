@@ -1,44 +1,50 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Edit Profile | Tengo</title>
-        <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-    </head>
-    <body>
-        {% include 'navbar.html' %}
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tengo adalah platform rekomendasi tempat ngopi di Pontianak. Temukan tempat favorit untuk nugas dan WFA di dekat kamu." />
+    <meta name="keywords" content="tempat ngopi, coffee shop, Pontianak, nugas, WFA, Tengo" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Tengo Team" />
+    <!-- End SEO Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile | Tengo</title>
+    <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
 
-        <div class="container mt-5">
-            <h2 class="my-4 bold-text text-center text-white">Edit Profil</h2>
-            
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group text-white">
-                    <label for="avatar">Avatar:</label>
-                    <div class="mb-3 text-center">
-                        <!-- Menampilkan avatar saat ini -->
-                        <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" class="rounded-circle img-fluid" style="max-width: 150px;">
-                    </div>
-                    <!-- Input untuk mengubah avatar -->
-                    <input type="file" class="form-control" id="avatar" name="avatar">
-                </div>
+    <div class="container mt-5">
+      <h2 class="my-4 bold-text text-center text-white">Edit Profil</h2>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </form>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group text-white">
+          <label for="avatar">Avatar:</label>
+          <div class="mb-3 text-center">
+            <!-- Menampilkan avatar saat ini -->
+            <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" class="rounded-circle img-fluid" style="max-width: 150px" />
+          </div>
+          <!-- Input untuk mengubah avatar -->
+          <input type="file" class="form-control" id="avatar" name="avatar" />
         </div>
 
-        <!-- Link ke Bootstrap JavaScript dan jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Link ke Bootstrap JavaScript dan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

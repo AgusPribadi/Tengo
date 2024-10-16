@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.urls import reverse
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -9,6 +10,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
 
 class CoffeeShop(models.Model):
     nama = models.CharField(max_length=200)
@@ -25,6 +27,10 @@ class CoffeeShop(models.Model):
     fasilitas = models.ManyToManyField('Fasilitas', blank=True)
     menu_images = models.ManyToManyField('MenuImage', blank=True, related_name='coffee_shops')
     tahun_berdiri = models.PositiveIntegerField(null=True, blank=True)
+
+    def get_absolute_url(self):
+        # Ganti 'detail_coffeeshop' dengan nama URL pattern untuk detail coffeeshop kamu
+        return reverse('detail_coffeeshop', args=[str(self.id)])
 
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
