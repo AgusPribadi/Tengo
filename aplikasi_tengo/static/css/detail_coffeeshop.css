@@ -30,17 +30,14 @@ body {
   margin-bottom: 5px;
 }
 
-/* Style for the entire container */
 .container {
   padding: 20px;
 }
 
-/* Style for the row */
 .row {
   margin: 0 -10px;
 }
 
-/* Style for the video source text */
 .video-source {
   font-size: 14px;
   color: #999;
@@ -52,13 +49,6 @@ body {
   height: 20px;
   margin-right: 10px;
   fill: #ff5722;
-}
-
-@media (max-width: 767px) {
-  .social-icon {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 .image-galleries {
@@ -88,8 +78,124 @@ body {
   transform: scale(1.05);
 }
 
+.cocok-untuk .card-title {
+  color: #111;
+}
+
+.gallery-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-images a {
+  display: block;
+  width: calc(33.33% - 10px);
+  max-width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery-images img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.gallery-images a:hover img {
+  transform: scale(1.05);
+}
+
+.cocok-untuk .col-md-4 {
+  margin-top: 10px;
+}
+
+.instagram-embed {
+  border-radius: 20px;
+  overflow: hidden;
+  width: 320px;
+  height: 420px;
+}
+
+.instagram-embed iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.facilities-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.facilities-card .card-title {
+  color: #212529;
+}
+
+.facilities-card .list-unstyled {
+  padding-left: 20px;
+}
+
+.facilities-card .list-unstyled li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.facilities-card .list-unstyled li i {
+  color: #28a745;
+  margin-right: 5px;
+}
+
+.facilities-card .list-unstyled li {
+  color: #000000;
+}
+
+/* Responsif untuk tampilan mobile */
 @media (max-width: 767px) {
   .gallery-images {
     justify-content: center;
+  }
+
+  .gallery-images a {
+    width: 100%;
+  }
+
+  .btn {
+    margin: 0;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .cocok-untuk .col-md-8:nth-child(3) {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .instagram-embed {
+    max-width: 100%;
+    width: 100%;
+    height: 101%;
+    padding-bottom: 80%;
+    position: relative;
+    margin: 20px auto 40px;
+  }
+
+  .instagram-embed iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .col-md-8 > .btn {
+    margin-bottom: 20px;
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
   }
 }

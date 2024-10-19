@@ -37,123 +37,6 @@
 
     <!-- CDN Light Gallery -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css" />
-    <style>
-      .cocok-untuk .card-title {
-        color: #111;
-      }
-
-      .gallery-images {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .gallery-images a {
-        display: block;
-        width: calc(33.33% - 10px);
-        max-width: 100%;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .gallery-images img {
-        width: 100%;
-        height: auto;
-        transition: transform 0.2s ease-in-out;
-      }
-
-      .gallery-images a:hover img {
-        transform: scale(1.05);
-      }
-
-      .cocok-untuk .col-md-4 {
-        margin-top: 10px;
-      }
-
-      .instagram-embed {
-        border-radius: 20px;
-        overflow: hidden;
-        width: 320px;
-        height: 320px;
-      }
-
-      .instagram-embed iframe {
-        width: 100%;
-        height: 100%;
-      }
-
-      /* Responsif untuk tampilan mobile */
-      @media (max-width: 767px) {
-        .gallery-images a {
-          width: 100%;
-        }
-
-        .btn {
-          margin: 0;
-          width: 100%;
-          margin: 5px 0;
-        }
-
-        .cocok-untuk .col-md-8:nth-child(3) {
-          width: 100%;
-          margin-top: 20px;
-          text-align: center; /* Menengahkan elemen di dalam parent container */
-        }
-
-        .instagram-embed {
-          max-width: 100%;
-          width: 100%; /* Mengatur lebar elemen agar tidak terlalu besar */
-          height: 101%;
-          padding-bottom: 80%; /* Memberi aspek rasio pada elemen */
-          position: relative;
-          margin: 20px auto 40px; /* Menengahkan elemen di layar dan memberikan jarak ke bawah */
-        }
-
-        .instagram-embed iframe {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-
-        /* Atau Anda juga bisa memberikan margin-bottom pada tombol "Gasss ke sana" */
-        .col-md-8 > .btn {
-          margin-bottom: 20px; /* Atur jarak antara tombol dan embed Instagram */
-        }
-      }
-
-      /* CSS untuk card fasilitas */
-      .facilities-card {
-        background-color: #f8f9fa; /* Warna latar belakang card */
-        border: 1px solid #dee2e6; /* Garis pinggir card */
-        border-radius: 10px; /* Sudut bulat card */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek depth */
-      }
-
-      .facilities-card .card-title {
-        color: #212529; /* Warna teks judul card */
-      }
-
-      .facilities-card .list-unstyled {
-        padding-left: 20px; /* Padding kiri untuk daftar fasilitas */
-      }
-
-      .facilities-card .list-unstyled li {
-        list-style: none; /* Hilangkan tanda bullet pada daftar fasilitas */
-        margin-bottom: 5px; /* Ruang antara setiap item daftar */
-      }
-
-      .facilities-card .list-unstyled li i {
-        color: #28a745; /* Warna ikon */
-        margin-right: 5px; /* Ruang antara ikon dan teks */
-      }
-
-      /* Ubah warna teks untuk daftar fasilitas */
-      .facilities-card .list-unstyled li {
-        color: #000000; /* Warna teks untuk daftar fasilitas */
-      }
-    </style>
   </head>
   <body>
     {% include 'navbar.html' %}
@@ -252,8 +135,10 @@
           <div class="btn-group" role="group" aria-label="Visit Status Buttons">
             <form action="{% url 'save_visit_status' coffee_shop.id 'visit_later' %}" method="post">
               {% csrf_token %}
-              <button type="submit" class="btn btn-primary w-100">Ingin Dikunjungi</button>
+              <button type="submit" class="btn btn-primary w-100 me-2">Ingin Dikunjungi</button>
             </form>
+          </div>
+          <div class="btn-group" role="group" aria-label="Visit Status Buttons">
             <form action="{% url 'save_visit_status' coffee_shop.id 'visited' %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn btn-success w-100">Sudah Dikunjungi</button>
@@ -263,12 +148,12 @@
         <!-- End Section Save Visit Status -->
 
         <!-- Section Cocok -->
-        <div class="col-md-8 mt-2 cocok-untuk">
-          <h2>Cocok untuk:</h2>
+        <div class="col-md-8 mt-4 cocok-untuk">
           <div class="row">
             <div class="col-md-8">
               <div class="card tag-card">
                 <div class="card-body">
+                  <h4 class="card-title">Cocok untuk:</h4>
                   <h6 class="card-title">{% for tag in coffee_shop.tags.all %} {{ tag.tag_name }}{% if not forloop.last %}, {% endif %} {% endfor %}</h6>
                 </div>
               </div>
@@ -287,14 +172,12 @@
                   {% endfor %}
                 </div>
               </div>
-              {% else %}
-              <p>Belum ada gambar menu yang diunggah untuk coffee shop ini.</p>
-              {% endif %}
+              {% else %} {% endif %}
             </div>
             <!-- End Menu Section -->
 
             <!-- Section Metode Pembayaran -->
-            <div class="col-md-8 mt-2">
+            <div class="col-md-8 mt-4">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Metode Pembayaran</h5>
@@ -322,19 +205,21 @@
               </div>
             </div>
             <!-- End Embed Instagram -->
+
+            <!-- Gasss ke sana -->
+            <div class="col-md-8">
+              <br />
+              {% if coffee_shop.google_maps_url %}
+              <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Gasss ke sana</a>
+              {% endif %}
+            </div>
+            <!-- End Gasss ke sana -->
+
+            <!-- Tahun Berdiri -->
+            <p><strong>Tahun Berdiri:</strong> {{ coffee_shop.tahun_berdiri }}</p>
+            <!-- End Tahun Berdiri -->
           </div>
         </div>
-
-        <!-- Gasss ke sana -->
-        <div class="col-md-8">
-          <br />
-          {% if coffee_shop.google_maps_url %}
-          <a href="{{ coffee_shop.google_maps_url }}" target="_blank" class="btn btn-primary">Gasss ke sana</a>
-          {% endif %}
-        </div>
-        <!-- End Gasss ke sana -->
-
-        <p><strong>Tahun Berdiri:</strong> {{ coffee_shop.tahun_berdiri }}</p>
 
         <!-- Tautan Berbagi -->
         <div class="card-body">
