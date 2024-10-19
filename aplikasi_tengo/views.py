@@ -94,7 +94,8 @@ def home(request):
     query = request.GET.get('q')
     lokasi_id = request.GET.get('lokasi')
 
-    coffee_shops = CoffeeShop.objects.all()
+    # Mengambil semua coffee shop dan mengurutkan dari yang terbaru
+    coffee_shops = CoffeeShop.objects.all().order_by('-created_at')
 
     if query:
         coffee_shops = coffee_shops.filter(Q(nama__icontains=query) | Q(alamat__icontains=query))
