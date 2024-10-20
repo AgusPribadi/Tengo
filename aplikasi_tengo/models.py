@@ -30,10 +30,6 @@ class CoffeeShop(models.Model):
     tahun_berdiri = models.PositiveIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
 
-    def get_absolute_url(self):
-        # Ganti 'detail_coffeeshop' dengan nama URL pattern untuk detail coffeeshop kamu
-        return reverse('detail_coffeeshop', args=[str(self.id)])
-
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
 
@@ -46,6 +42,9 @@ class CoffeeShop(models.Model):
     ]
 
     metode_pembayaran = models.ManyToManyField('PaymentMethod', blank=True)
+
+    def get_absolute_url(self):
+        return reverse('detail_coffeeshop', args=[self.slug])
 
     def save(self, *args, **kwargs):
         if not self.slug:

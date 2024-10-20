@@ -16,6 +16,7 @@ class MenuImageInline(admin.TabularInline):
     extra = 1
 
 class CoffeeShopAdmin(admin.ModelAdmin):
+    search_fields = ['nama', 'alamat']
     inlines = [CoffeeShopImageInline, MenuImageInline]
     actions = ['download_data_as_csv']
 

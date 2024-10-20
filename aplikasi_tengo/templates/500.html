@@ -8,20 +8,17 @@
     <meta name="keywords" content="tempat ngopi, coffee shop, Pontianak, nugas, WFA, Tengo" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Tengo Team" />
-    <!-- End SEO Meta Tags -->
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
     <!-- Mobile -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
-    <title>Berlangganan Berhasil</title>
+    <title>Halaman Tidak Ditemukan</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{% static 'img/tengo-icon.ico' %}" type="image/x-icon" />
+    <link rel="icon" href="{% static 'img/tengo-favicon.ico' %}" type="image/x-icon" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
     <!-- Font Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
@@ -39,34 +36,25 @@
         padding: 20px;
       }
       h1 {
-        font-size: 2em;
+        font-size: 3em;
         color: #fff;
       }
       p {
-        font-size: 1em;
+        font-size: 1.2em;
         color: #ccc;
       }
       a {
         color: #ff5722;
         text-decoration: none;
       }
-
-      @media screen and (max-width: 768px) {
-        h1 {
-          font-size: 1.5em;
-        }
-        p {
-          font-size: 0.9em;
-        }
-      }
     </style>
   </head>
   <body>
     {% include 'navbar.html' %}
     <div class="container">
-      <h1>Pesan Terkirim 🥳</h1>
-      <p>Pesan kamu telah terkirim ke email Tengo, mohon ditunggu ya, Tengo akan balas pesan kamu sesegera mungkin 😊</p>
-      <p>Menuju ke <a href="{% url 'home' %}">Halaman Utama</a></p>
+      <h1>500 - Halaman Tidak Ditemukan</h1>
+      <p>Maaf, halaman yang kamu cari tidak ditemukan seperti kabarnya dia 😓</p>
+      <p>Kembali ke <a href="{% url 'home' %}">Halaman Utama</a>.</p>
     </div>
 
     <!-- Link ke Bootstrap JavaScript dan jQuery -->

@@ -89,7 +89,7 @@
     <section id="contact" class="contact py-5 bg-light">
       <div class="container text-center">
         <h2>Hubungi Kami</h2>
-        <form action="" method="POST" class="mx-auto w-50" data-aos="fade-up">
+        <form action="{% url 'contact' %}" method="POST" class="mx-auto w-50" data-aos="fade-up">
           {% csrf_token %}
           <div class="form-group">
             <input type="text" name="name" placeholder="Nama Kamu" class="form-control" required />

@@ -10,16 +10,15 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm, UserProfileForm
-from .models import UserProfile
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.generic import View
 from django.conf import settings
 
+# Untuk Views Halaman Index
 def index(request):
     return render(request, 'index.html')
 
+# Untuk Views Halaman Register
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -37,6 +36,7 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+# Untuk Views Halaman Login
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')  # Mengambil email dari form
@@ -55,11 +55,13 @@ def login_view(request):
             messages.error(request, 'Email atau password salah.')
     return render(request, 'registration/login.html')
 
+# Untuk Views Logout
 def logout_view(request):
     logout(request)
     messages.success(request, 'Anda berhasil logout.')
     return redirect('login')
 
+# Untuk Views Halaman Profile
 @login_required
 def profile(request):
     try:
@@ -77,6 +79,7 @@ def profile(request):
         'visit_later_shops': visit_later_shops,
     })
 
+# Untuk Views Halaman Edit Profile
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -89,36 +92,33 @@ def edit_profile(request):
         form = UserProfileForm(instance=request.user.userprofile)
     return render(request, 'edit_profile.html', {'form': form})
 
-
+# Untuk Views Halaman Home
 def home(request):
     query = request.GET.get('q')
     lokasi_id = request.GET.get('lokasi')
 
-    # Mengambil semua coffee shop dan mengurutkan dari yang terbaru
     coffee_shops = CoffeeShop.objects.all().order_by('-created_at')
 
     if query:
         coffee_shops = coffee_shops.filter(Q(nama__icontains=query) | Q(alamat__icontains=query))
 
-    # Jika ada filter berdasarkan lokasi yang dipilih, filter berdasarkan lokasi tersebut
     if lokasi_id:
         coffee_shops = coffee_shops.filter(lokasi__id=lokasi_id)
 
-    # Ambil semua lokasi untuk dropdown select
     locations = Lokasi.objects.all()
 
-    total_coffee_shops = coffee_shops.count()  # Menghitung jumlah total Coffee Shop
+    total_coffee_shops = coffee_shops.count()
 
     return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops, 'locations': locations})
 
-
+# Untuk Views Fitur Filter
 def filtered_location(request, location_id):
     selected_location = get_object_or_404(Lokasi, pk=location_id)
     coffee_shops = CoffeeShop.objects.filter(lokasi=selected_location)
 
     return render(request, 'home.html', {'coffee_shops': coffee_shops})
 
-
+# Untuk Views Detail CoffeeShop
 def detail_coffeeshop(request, slug):
     coffee_shop = get_object_or_404(CoffeeShop, slug=slug)
     context = {
@@ -126,29 +126,33 @@ def detail_coffeeshop(request, slug):
     }
     return render(request, 'detail_coffeeshop.html', context)
 
-
+# Untuk Views Halaman About
 def about(request):
     return render(request, 'about.html')
 
-
+# Untuk Views Halaman Disclaimer 
 def disclaimer(request):
     return render(request, 'disclaimer.html')
 
+# Untuk Views Halaman Not Found 404
+def not_found_404(request, exception):
+    return render(request, '404.html', status=404)
 
-def not_found(request, exception):
-    return render(request, '404.html')
+# Untuk Views Halaman Not Found 500
+def not_found_500(request):
+    return render(request, '500.html', status=500)
 
-
+# Untuk Views Halaman Loker
 def gambar_lowongan(request):
     gambar_lowongan = GambarLowongan.objects.all()
     return render(request, 'gambar_lowongan.html', {'gambar_lowongan': gambar_lowongan})
 
-
+# Untuk Views Halaman Recommendation
 def recommendation(request):
     recommendations = Recommendation.objects.all()
     return render(request, 'recommendation.html', {'recommendations': recommendations})
 
-
+# Untuk Views Subscribe
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -171,16 +175,17 @@ def subscribe(request):
     
     return render(request, 'footer.html')
 
-
+# Untuk Views Halaman Sukses
 def success(request):
     return render(request, 'success.html')
 
-
+# Untuk Views Halaman Maps
 def map_view(request):
     coffee_shops = CoffeeShop.objects.all()
     context = {'coffee_shops': coffee_shops}
     return render(request, 'map.html', context)
 
+# Untuk Views Fitur Kunjungan
 @login_required
 def save_visit_status(request, coffee_shop_id, status):
     coffee_shop = get_object_or_404(CoffeeShop, id=coffee_shop_id)
@@ -197,6 +202,7 @@ def save_visit_status(request, coffee_shop_id, status):
     messages.success(request, f'Status kunjungan untuk {coffee_shop.nama} berhasil diperbarui')
     return redirect('detail_coffeeshop', slug=coffee_shop.slug)
 
+# Untuk Views Robot CEO Google
 class RobotsView(View):
     def get(self, request, *args, **kwargs):
         sitemap_url = f"{request.scheme}://{request.get_host()}/sitemap.xml"
@@ -207,3 +213,26 @@ class RobotsView(View):
         Sitemap: {sitemap_url}
         """
         return HttpResponse(content, content_type="text/plain")
+
+# Untuk Views Contact
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Membuat pesan untuk dikirim
+        subject = f'Pesan dari {name}'
+        full_message = f'Dari: {name}\nEmail: {email}\nPesan:\n{message}'
+
+        # Mengirim email
+        send_mail(
+            subject,
+            full_message,
+            settings.EMAIL_HOST_USER,
+            ['hitengo2023@gmail.com'],
+            fail_silently=False,
+        )
+        return render(request, 'success.html')
+    
+    return render(request, 'index.html')

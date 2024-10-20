@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-77vz*7yp)zq@3w*ce(hj_t3*14un+lfha@c1@t4t*st2#47fsj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -113,6 +113,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Untuk Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -120,6 +121,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hitengo2023@gmail.com'
 EMAIL_HOST_PASSWORD = 'selllbznznwcdoow'
 
+# Untuk Login
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
