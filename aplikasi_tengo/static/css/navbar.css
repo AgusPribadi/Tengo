@@ -1,42 +1,39 @@
 /* Membuat logo di navbar menjadi lebih besar dan mengatur jarak dengan teks */
 .navbar-brand img {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* Mengatur tampilan teks pada link navbar */
 .navbar-nav .nav-link {
-    font-size: 16px;
-    padding: 8px 15px;
+  font-size: 16px;
+  padding: 8px 15px;
 }
 
 /* Memberikan efek hover pada link navbar */
 .navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
 }
 
 /* Memberikan efek active pada link navbar */
 .navbar-nav .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
 }
 
 /* Menambahkan border radius pada navbar */
 .navbar {
-    border-radius: 12px;
+  border-radius: 12px;
 }
 
 /* Menyembunyikan navbar-toggler pada layar besar */
 @media (min-width: 992px) {
-    .navbar-toggler {
-        display: none;
-    }
+  .navbar-toggler {
+    display: none;
+  }
 }
-<<<<<<< HEAD
 
 .avatar {
-    object-fit: cover;
-    border-radius: 50%;
+  object-fit: cover;
+  border-radius: 50%;
 }
-=======
->>>>>>> 92ba82aacc09e0f64eecc1a10351825e7d9550a1

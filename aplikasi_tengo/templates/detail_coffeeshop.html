@@ -9,8 +9,11 @@
     <meta name="author" content="Tengo Team" />
     <!-- End SEO Meta Tags -->
 
+    <!-- Mobile -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title -->
     <title>Tengo - Detail Tengo</title>
 
     <!-- Open Graph Protocol (OGP) -->
@@ -199,7 +202,7 @@
             <!-- End Section Metode Pembayaran -->
 
             <!-- Embed Instagram -->
-            <div class="col-md-8 mt-4">
+            <div class="col-md-8 mt-4 mb-4">
               <div class="instagram-embed">
                 <iframe src="{{ coffee_shop.instagram_url }}embed/" width="320" height="320" frameborder="0" scrolling="no"></iframe>
               </div>
@@ -216,7 +219,9 @@
             <!-- End Gasss ke sana -->
 
             <!-- Tahun Berdiri -->
-            <p><strong>Tahun Berdiri:</strong> {{ coffee_shop.tahun_berdiri }}</p>
+            <div class="col-md-8 mt-4">
+              <p><strong>Tahun Berdiri:</strong> {{ coffee_shop.tahun_berdiri }}</p>
+            </div>
             <!-- End Tahun Berdiri -->
           </div>
         </div>
@@ -236,6 +241,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lg-thumbnail@1.1.0/dist/lg-thumbnail.min.js"></script>
