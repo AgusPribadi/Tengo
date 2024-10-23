@@ -5,4 +5,4 @@ env/
 db.sqlite3
 
 # Ignore Django settings file
-aplikasi_tengo/settings.py  # Sesuaikan dengan path settings.py-mu
+tengo/settings.py  # Sesuaikan dengan path settings.py-mu
