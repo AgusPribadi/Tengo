@@ -8,19 +8,41 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Tengo Team" />
     <!-- End SEO Meta Tags -->
+
+    <!-- Mobile -->
     <meta charset="UTF-8" />
-    <title>Footer 03 Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
   </head>
   <body>
-    <footer>
+    <footer class="bg-dark">
       <div class="footer-line"></div>
       <div class="footer-wrapper">
         <div class="footer-bottom">
+          <div class="footer-page">
+            <ul>
+              <li><a class="footer-link" href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+            </ul>
+            <ul>
+              <li><a class="footer-link" href="{% url 'disclaimer' %}">Disclaimer</a></li>
+            </ul>
+            <ul>
+              <li><a class="footer-link" href="{% url 'about' %}">Tentang Kami</a></li>
+            </ul>
+            <ul>
+              <li><a class="footer-link" href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+            <ul>
+              <li><a class="footer-link" href="{% url 'sitemap_page' %}">Sitemap</a></li>
+            </ul>
+          </div>
           <div class="social-links">
             <ul>
               <li>

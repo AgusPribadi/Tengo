@@ -1,4 +1,3 @@
 User-agent: *
-Disallow:
-
-Sitemap: /sitemap.xml
+Disallow: /admin/
+Sitemap: https://tengo.pythonanywhere.com/sitemap.xml

@@ -21,14 +21,12 @@
 }
 /* ----- End Navbar ----- */
 
-/* Mengatur tampilan container agar rapi */
 .container {
   padding: 20px;
 }
 
-/* Gaya Umum */
 body {
-  padding: 20px;
+  padding-top: 20px;
   font-family: "Poppins", sans-serif;
   background-color: #111;
 }

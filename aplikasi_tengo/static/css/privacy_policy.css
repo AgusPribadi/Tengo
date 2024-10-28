@@ -1,0 +1,38 @@
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background-color: #111;
+  padding-top: 20px;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  color: #007bff;
+  margin-top: 20px;
+}
+
+ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+li {
+  color: white;
+}
+
+p {
+  color: white;
+  margin-bottom: 15px;
+}
+
+strong {
+  color: white;
+}

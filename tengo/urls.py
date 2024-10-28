@@ -3,12 +3,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from aplikasi_tengo.sitemaps import CoffeeshopSitemap
+from aplikasi_tengo.sitemaps import CoffeeShopSitemap, StaticViewSitemap
 from aplikasi_tengo.views import RobotsView
 from django.views.generic import TemplateView
 
 sitemaps = {
-    'coffeeshop': CoffeeshopSitemap,
+    'coffeeshops': CoffeeShopSitemap,
+    'static': StaticViewSitemap,
 }
 
 urlpatterns = [

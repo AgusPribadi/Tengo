@@ -1,32 +1,33 @@
-/* Membuat logo di navbar menjadi lebih besar dan mengatur jarak dengan teks */
+.navbar {
+  width: 95%;
+  margin: 0 auto;
+  background-color: #333;
+  padding: 10px 20px;
+}
+
 .navbar-brand img {
   margin-right: 10px;
 }
 
-/* Mengatur tampilan teks pada link navbar */
 .navbar-nav .nav-link {
   font-size: 16px;
   padding: 8px 15px;
 }
 
-/* Memberikan efek hover pada link navbar */
 .navbar-nav .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 
-/* Memberikan efek active pada link navbar */
 .navbar-nav .nav-link.active {
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 5px;
 }
 
-/* Menambahkan border radius pada navbar */
 .navbar {
   border-radius: 12px;
 }
 
-/* Menyembunyikan navbar-toggler pada layar besar */
 @media (min-width: 992px) {
   .navbar-toggler {
     display: none;

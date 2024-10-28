@@ -9,10 +9,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import CustomUserCreationForm, UserProfileForm
+from .forms import CustomUserCreationForm, UserProfileForm, ContactForm
 from django.http import HttpResponse
 from django.views.generic import View
 from django.conf import settings
+from django.contrib.sitemaps import Sitemap
 
 # Untuk Views Halaman Index
 def index(request):
@@ -202,16 +203,18 @@ def save_visit_status(request, coffee_shop_id, status):
     messages.success(request, f'Status kunjungan untuk {coffee_shop.nama} berhasil diperbarui')
     return redirect('detail_coffeeshop', slug=coffee_shop.slug)
 
-# Untuk Views Robot CEO Google
+# Untuk Robots Crawler
 class RobotsView(View):
     def get(self, request, *args, **kwargs):
         sitemap_url = f"{request.scheme}://{request.get_host()}/sitemap.xml"
-        content = f"""
-        User-agent: *
-        Disallow:
-
-        Sitemap: {sitemap_url}
-        """
+        
+        # Konten untuk robots.txt
+        content = (
+            "User-agent: *\n"
+            "Disallow: /admin/\n\n"
+            f"Sitemap: {sitemap_url}\n"
+        )
+        
         return HttpResponse(content, content_type="text/plain")
 
 # Untuk Views Contact
@@ -236,3 +239,50 @@ def contact(request):
         return render(request, 'success.html')
     
     return render(request, 'index.html')
+
+# Halaman Privacy Policy
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
+
+# Halaman Contact
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            nama = form.cleaned_data['nama']
+            email = form.cleaned_data['email']
+            pesan = form.cleaned_data['pesan']
+
+            send_mail(
+                f'Pesan dari {nama}',
+                pesan,
+                email,
+                ['hitengo2023@gmail.com'],
+                fail_silently=False,
+            )
+
+            return render(request, 'success.html')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
+
+# Halaman Sitemap
+def sitemap_view(request):
+    # Ambil semua coffee shop untuk ditampilkan dalam sitemap
+    coffee_shops = CoffeeShop.objects.all().order_by('-created_at')
+    
+    # URL untuk halaman statis
+    static_pages = [
+        {'name': 'Home', 'url': reverse('index')},
+        {'name': 'Tentang Kami', 'url': reverse('about')},
+        {'name': 'Kontak', 'url': reverse('contact')},
+        {'name': 'Privacy Policy', 'url': reverse('privacy_policy')},
+        {'name': 'Disclaimer', 'url': reverse('disclaimer')},
+    ]
+    
+    context = {
+        'coffee_shops': coffee_shops,
+        'static_pages': static_pages,
+    }
+    return render(request, 'sitemap.html', context)

@@ -22,6 +22,9 @@ urlpatterns = [
     path('map/', views.map_view, name='map'),
     path('contact/', views.contact, name='contact'),
     path('save-visit-status/<int:coffee_shop_id>/<str:status>/', views.save_visit_status, name='save_visit_status'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('contact/', views.contact, name='contact'),
+    path('sitemap/', views.sitemap_view, name='sitemap_page'),
 ]
 
 handler404 = 'aplikasi_tengo.views.not_found_404'

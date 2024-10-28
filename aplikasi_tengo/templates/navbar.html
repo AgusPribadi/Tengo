@@ -1,60 +1,51 @@
 {% load static %}
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'img/logo-tengo-white.png' %}" alt="Logo" width="150" height="70" class="img-fluid" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'recommendation' %}">Recommendation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'gambar_lowongan' %}">Loker</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'disclaimer' %}">Disclaimer</a>
-                </li>
-                <li class="nav-item"></li>
-                    <a class="nav-link" href="{% url 'map' %}">Map</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.instagram.com/tengo.id/" target="_blank">Contact</a>
-                </li>
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'img/logo-tengo-white.png' %}" alt="Logo" width="150" height="70" class="img-fluid" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'recommendation' %}">Recommendation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'gambar_lowongan' %}">Loker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'map' %}">Map</a>
+        </li>
 
-                {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <!-- Tampilkan avatar jika ada, default jika tidak -->
-                            <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" class="avatar rounded-circle" width="30" height="30">
-                            {{ user.username }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                        </div>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <!-- Tampilkan avatar jika ada, default jika tidak -->
+            <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}" class="avatar rounded-circle" width="30" height="30" />
+            {{ user.username }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
+  </div>
 </nav>

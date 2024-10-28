@@ -1,5 +1,5 @@
 body {
-  padding: 20px;
+  padding-top: 20px;
   font-family: "Poppins", sans-serif;
   background-color: #111;
   color: #fff;
@@ -10,18 +10,16 @@ body {
   padding: 20px;
 }
 
-/* CSS untuk konten berada di tengah */
 .frame-twitter {
   text-align: center;
 }
 
-/* CSS untuk frame Twitter dengan tinggi tertentu */
 .twitter-frame {
-  height: 350px; /* Atur tinggi frame sesuai kebutuhan */
-  width: 100%; /* Agar frame mengikuti lebar container */
-  max-width: 550px; /* Batasi lebar maksimum frame */
-  margin: 0 auto; /* Menengahkan frame di dalam container */
-  display: block; /* Menghilangkan whitespace di sekitar frame */
+  height: 350px;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  display: block;
 }
 
 /* CSS untuk responsif di perangkat mobile */

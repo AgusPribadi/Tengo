@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <!-- Mobile -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/tengo-favicon.ico' %}" type="image/x-icon" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Title -->
+    <title>Kebijakan Privasi - Tengo</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/privacy_policy.css' %}" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+      <h1>Kebijakan Privasi</h1>
+      <p>
+        Kami di <strong>Tengo</strong> sangat menghargai privasi Anda. Halaman ini menjelaskan informasi pribadi apa saja yang kami kumpulkan, bagaimana kami menggunakannya, dan langkah-langkah yang kami ambil untuk melindungi informasi
+        Anda.
+      </p>
+
+      <h2>Informasi yang Kami Kumpulkan</h2>
+      <p>Kami dapat mengumpulkan informasi pribadi Anda saat Anda:</p>
+      <ul>
+        <li>Mengunjungi dan menggunakan situs web kami.</li>
+        <li>Mengisi formulir kontak atau berlangganan layanan email kami.</li>
+      </ul>
+      <p>Informasi yang mungkin kami kumpulkan meliputi:</p>
+      <ul>
+        <li>Nama</li>
+        <li>Alamat email</li>
+        <li>Informasi lainnya yang Anda berikan secara sukarela melalui formulir di situs kami.</li>
+      </ul>
+
+      <h2>Penggunaan Informasi</h2>
+      <p>Informasi yang kami kumpulkan digunakan untuk:</p>
+      <ul>
+        <li>Menyediakan layanan atau informasi yang Anda minta.</li>
+        <li>Meningkatkan pengalaman pengguna di situs kami.</li>
+        <li>Menanggapi pertanyaan atau permintaan Anda.</li>
+      </ul>
+
+      <h2>Cookie</h2>
+      <p>
+        Situs kami menggunakan cookie untuk meningkatkan pengalaman pengguna. Cookie adalah file kecil yang disimpan di perangkat Anda dan memungkinkan kami mengenali browser Anda dan menyimpan preferensi tertentu. Anda dapat memilih untuk
+        menonaktifkan cookie melalui pengaturan browser Anda.
+      </p>
+
+      <h2>Keamanan Informasi</h2>
+      <p>Kami berkomitmen untuk menjaga keamanan informasi pribadi Anda. Kami menerapkan berbagai langkah keamanan untuk melindungi data Anda dari akses yang tidak sah.</p>
+
+      <h2>Tautan Eksternal</h2>
+      <p>Situs kami mungkin berisi tautan ke situs web eksternal. Kami tidak bertanggung jawab atas kebijakan privasi atau konten situs eksternal tersebut.</p>
+
+      <h2>Perubahan Kebijakan Privasi</h2>
+      <p>Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Pembaruan akan diumumkan melalui halaman ini, jadi kami menyarankan Anda untuk mengunjungi halaman ini secara berkala.</p>
+
+      <h2>Hubungi Kami</h2>
+      <p>Jika Anda memiliki pertanyaan terkait kebijakan privasi ini, Anda dapat menghubungi kami melalui formulir kontak di situs kami.</p>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+  </body>
+</html>

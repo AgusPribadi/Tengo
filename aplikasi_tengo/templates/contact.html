@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Mobile -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/tengo-favicon.ico' %}" type="image/x-icon" />
+
+    <!-- Title -->
+    <title>Contact Us</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+      <h1>Kontak Kami</h1>
+
+      {% if messages %} {% for message in messages %}
+      <div class="alert success">{{ message }}</div>
+      {% endfor %} {% endif %}
+
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>
