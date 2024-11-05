@@ -9,7 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
-    path('home/', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('not-found-404/', views.not_found_404, name='not_found_404'),
     path('detail/<slug:slug>/', views.detail_coffeeshop, name='detail_coffeeshop'),

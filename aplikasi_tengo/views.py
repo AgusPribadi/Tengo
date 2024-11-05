@@ -17,22 +17,36 @@ from django.contrib.sitemaps import Sitemap
 
 # Untuk Views Halaman Index
 def index(request):
-    return render(request, 'index.html')
+    query = request.GET.get('q')
+    lokasi_id = request.GET.get('lokasi')
+
+    coffee_shops = CoffeeShop.objects.all().order_by('-created_at')
+
+    if query:
+        coffee_shops = coffee_shops.filter(Q(nama__icontains=query) | Q(alamat__icontains=query))
+
+    if lokasi_id:
+        coffee_shops = coffee_shops.filter(lokasi__id=lokasi_id)
+
+    locations = Lokasi.objects.all()
+
+    total_coffee_shops = coffee_shops.count()
+
+    return render(request, 'index.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops, 'locations': locations})
 
 # Untuk Views Halaman Register
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Simpan pengguna baru
+            user = form.save()  
             username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')
             
-            # Membuat profil secara otomatis untuk pengguna baru
             UserProfile.objects.create(user=user)
             
             messages.success(request, f'Akun berhasil dibuat untuk {username} dengan email {email}! Silakan login untuk melanjutkan.')
-            return redirect('login')  # Alihkan ke halaman login
+            return redirect('login')
     else:
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
@@ -51,7 +65,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Kamu berhasil masuk!')
-            return redirect('home')
+            return redirect('index')
         else:
             messages.error(request, 'Email atau password salah.')
     return render(request, 'registration/login.html')
@@ -69,7 +83,7 @@ def profile(request):
         profile = UserProfile.objects.get(user=request.user)
     except UserProfile.DoesNotExist:
         messages.error(request, "Profil pengguna tidak ditemukan. Silakan hubungi admin.")
-        return redirect('home')
+        return redirect('index')
 
     visited_shops = CoffeeShop.objects.filter(visitstatus__user=request.user, visitstatus__status='visited')
     visit_later_shops = CoffeeShop.objects.filter(visitstatus__user=request.user, visitstatus__status='visit_later')
@@ -93,31 +107,12 @@ def edit_profile(request):
         form = UserProfileForm(instance=request.user.userprofile)
     return render(request, 'edit_profile.html', {'form': form})
 
-# Untuk Views Halaman Home
-def home(request):
-    query = request.GET.get('q')
-    lokasi_id = request.GET.get('lokasi')
-
-    coffee_shops = CoffeeShop.objects.all().order_by('-created_at')
-
-    if query:
-        coffee_shops = coffee_shops.filter(Q(nama__icontains=query) | Q(alamat__icontains=query))
-
-    if lokasi_id:
-        coffee_shops = coffee_shops.filter(lokasi__id=lokasi_id)
-
-    locations = Lokasi.objects.all()
-
-    total_coffee_shops = coffee_shops.count()
-
-    return render(request, 'home.html', {'coffee_shops': coffee_shops, 'total_coffee_shops': total_coffee_shops, 'locations': locations})
-
 # Untuk Views Fitur Filter
 def filtered_location(request, location_id):
     selected_location = get_object_or_404(Lokasi, pk=location_id)
     coffee_shops = CoffeeShop.objects.filter(lokasi=selected_location)
 
-    return render(request, 'home.html', {'coffee_shops': coffee_shops})
+    return render(request, 'index.html', {'coffee_shops': coffee_shops})
 
 # Untuk Views Detail CoffeeShop
 def detail_coffeeshop(request, slug):
@@ -274,7 +269,7 @@ def sitemap_view(request):
     
     # URL untuk halaman statis
     static_pages = [
-        {'name': 'Home', 'url': reverse('index')},
+        {'name': 'Index', 'url': reverse('index')},
         {'name': 'Tentang Kami', 'url': reverse('about')},
         {'name': 'Kontak', 'url': reverse('contact')},
         {'name': 'Privacy Policy', 'url': reverse('privacy_policy')},

@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,130 +8,136 @@
     <meta name="keywords" content="tempat ngopi, coffee shop, Pontianak, nugas, WFA, Tengo" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Tengo Team" />
-    <!-- End SEO Meta Tags -->
 
     <!-- Mobile -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Title -->
-    <title>Tengo | Tempat Ngopi</title>
+    <title>Tengo - Tempat Ngopi</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/tengo-favicon.ico' %}" type="image/x-icon" />
 
-    <!-- Font Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Fonts Gstatic -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 
-    <!-- Manifest -->
-    <link rel="manifest" href="{% static 'manifest.json' %}" />
-
-    <!-- Adsense -->
-    <meta name="google-adsense-account" content="ca-pub-2057105607214194" />
+    <!-- CDN Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   </head>
-
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <img src="{% static 'img/logo-tengo.png' %}" alt="Logo Tengo" class="img-fluid" width="100px" />
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    {% include 'navbar.html' %}
+    <div class="container">
+      <!-- Menampilkan pesan -->
+      {% if messages %}
+      <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#features">Fitur</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">Tentang Kami</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Kontak</a>
-              </li>
-            </ul>
-          </div>
         </div>
-      </nav>
-      <div class="jumbotron jumbotron-fluid text-center" data-aos="zoom-in">
-        <div class="container">
-          <div class="jumbotron-bg"></div>
-          <h1 class="display-4">Tengo</h1>
-          <p class="lead">Temukan Tempat Ngopi Terbaik di Sekitar Kamu!</p>
-          <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Masuk Sekarang</a>
-        </div>
+        {% endfor %}
       </div>
-    </header>
-    <section id="features" class="features py-5 bg-light" data-aos="fade-down">
-      <div class="container text-center">
-        <h2>Apa yang Tengo Tawarkan?</h2>
-        <div class="row mt-4" data-aos="fade-up">
-          <div class="col-lg-4 mb-4">
-            <img src="{% static 'img/rekomendasi.jpg' %}" alt="Rekomendasi Khusus" class="img-fluid" />
-            <h3 class="mt-3">Rekomendasi Khusus</h3>
-            <p>Dapatkan rekomendasi Tempat Ngopi yang sesuai dengan preferensimu. Nikmati kopi dan nugas favoritmu dengan suasana yang asik.</p>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <img src="{% static 'img/review.jpg' %}" alt="Reviews" class="img-fluid" />
-            <h3 class="mt-3">Preview Tempat</h3>
-            <p>Preview gambar cuplikan dari setiap Tempat Ngopi yang akan kamu kunjungi</p>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <img src="{% static 'img/terdekat.jpg' %}" alt="Temukan Coffee Shop Terdekat" class="img-fluid" />
-            <h3 class="mt-3">Temukan Tempat Ngopi Terdekat</h3>
-            <p>Cari Tempat Ngopi paling dekat dari lokasimu. Nikmati nugas dan WFA tanpa perlu pergi jauh-jauh.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="about" class="about py-5">
-      <div class="container text-center">
-        <h2>Tentang Kami</h2>
-        <p class="lead" data-aos="fade-right">
-          Tengo adalah platform rekomendasi tempat ngopi untuk nugas, skripsian dan WFA terbaikmu. Kami menyediakan informasi tentang berbagai Tempat Ngopi di seluruh kota Pontianak saat ini, sehingga Kamu dapat menemukan Tempat Ngopi
-          favorit kamu dengan mudah.
-        </p>
-      </div>
-    </section>
-    <section id="contact" class="contact py-5 bg-light">
-      <div class="container text-center">
-        <h2>Hubungi Kami</h2>
-        <form action="{% url 'contact' %}" method="POST" class="mx-auto w-50" data-aos="fade-up">
-          {% csrf_token %}
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Nama Kamu" class="form-control" required />
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Email Kamu" class="form-control" required />
-          </div>
-          <div class="form-group">
-            <textarea name="message" placeholder="Pesan Kamu" class="form-control" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-block">Kirim Pesan</button>
-        </form>
-      </div>
-    </section>
+      {% endif %}
+      <!-- End Menampilkan Pesan -->
+      <h1 class="my-4 bold-text">Tengo - Daftar Tempat Ngopi</h1>
 
-    <!-- Footer -->
-    {% include 'footer.html' %}
+      <!-- Form pencarian dan filter berdasarkan lokasi -->
+      <form method="GET" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Cari tempat ngopi..." name="q" value="{{ request.GET.q }}" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Cari</button>
+          </div>
+        </div>
+        <p style="color: white">{{ total_coffee_shops }} Tempat Ngopi</p>
+
+        <!-- Dropdown select untuk filter berdasarkan lokasi -->
+        <div class="form-group">
+          <select class="custom-select" id="lokasi" name="lokasi">
+            <option value="">Semua Lokasi</option>
+            {% for location in locations %}
+            <option value="{{ location.id }}">{{ location.nama_lokasi }}</option>
+            {% endfor %}
+          </select>
+          <button class="btn btn-primary btn-sm mt-2" type="submit">Filter</button>
+        </div>
+      </form>
+
+      <!-- Daftar Coffee Shop -->
+      {% if coffee_shops %}
+      <div class="row">
+        {% for coffee_shop in coffee_shops %}
+        <div class="col-md-4">
+          <div class="card coffee-card">
+            <a href="{% url 'detail_coffeeshop' coffee_shop.slug %}">
+              <img src="{{ coffee_shop.gallery.url }}" class="card-img-top" alt="{{ coffee_shop.nama }}" />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{ coffee_shop.nama }}</h5>
+              <p class="card-text"><strong>Alamat:</strong> {{ coffee_shop.alamat }}</p>
+              <p class="card-text">
+                <strong>Jam Buka:</strong>
+                {% if coffee_shop.jam_buka == "24 Jam" %}
+                <strong><span style="color: #00ff00">{{ coffee_shop.jam_buka }}</span></strong>
+                {% else %} {{ coffee_shop.jam_buka }} {% endif %}
+              </p>
+              <p class="card-text"><strong>Contact:</strong> {{ coffee_shop.contact }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="alert alert-info">Duh sepertinya Tempat Ngopi yang kamu cari belum terinput 😢</div>
+      {% endif %}
+    </div>
+
+    <!-- Tombol Scroll to Top -->
+    <a href="#" id="scrollToTopButton" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
 
     <!-- Link ke Bootstrap JavaScript dan jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="{% static 'js/index.js' %}"></script>
+
     <script>
-      AOS.init();
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("scrollToTopButton").style.display = "block";
+        } else {
+          document.getElementById("scrollToTopButton").style.display = "none";
+        }
+      }
+
+      document.getElementById("scrollToTopButton").onclick = function () {
+        scrollToTop();
+      };
+
+      function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
     </script>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
   </body>
 </html>

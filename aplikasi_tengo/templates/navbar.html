@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
   <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}">
+    <a class="navbar-brand" href="{% url 'index' %}">
       <img src="{% static 'img/logo-tengo-white.png' %}" alt="Logo" width="150" height="70" class="img-fluid" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'recommendation' %}">Recommendation</a>
