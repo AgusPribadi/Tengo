@@ -1,3 +1,4 @@
+/* Footer Styling */
 footer {
   background-color: #333;
   color: #fff;
@@ -101,12 +102,22 @@ footer {
 @media screen and (max-width: 768px) {
   .footer-columns {
     flex-direction: column;
+    align-items: center;
     margin-top: 20px;
   }
 
   .footer-columns section {
     margin-right: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .footer-headline h2 {
+    font-size: 20px;
+  }
+
+  .footer-headline p {
+    font-size: 14px;
   }
 
   .social-links li {
@@ -115,5 +126,11 @@ footer {
 
   .footer-bottom {
     font-size: 12px;
+  }
+
+  .footer-page {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
   }
 }
