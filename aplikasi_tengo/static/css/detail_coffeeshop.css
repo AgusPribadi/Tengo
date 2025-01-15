@@ -78,6 +78,11 @@ body {
   transform: scale(1.05);
 }
 
+.card-body .card-title {
+  color: #111;
+  font-size: 16px;
+}
+
 .data-section .card-title {
   color: #111;
 }
@@ -234,10 +239,6 @@ li i {
 
   .col-md-8 {
     width: 100%;
-  }
-
-  .card-title {
-    font-size: 16px;
   }
 
   li {
