@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +28,7 @@
     <link rel="icon" href="{% static 'img/tengo-favicon.ico' %}" type="image/x-icon" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -150,32 +151,17 @@
         </div>
         <!-- End Section Save Visit Status -->
 
-        <!-- Section Cocok -->
-        <div class="col-md-8 mt-4 cocok-untuk">
+        <!-- Data Section -->
+        <div class="col-md-8 mt-4 data-section">
           <div class="row">
-            <div class="col-md-8">
-              <div class="card tag-card">
-                <div class="card-body">
-                  <h4 class="card-title">Cocok untuk:</h4>
-                  <h6 class="card-title">{% for tag in coffee_shop.tags.all %} {{ tag.tag_name }}{% if not forloop.last %}, {% endif %} {% endfor %}</h6>
-                </div>
-              </div>
-            </div>
-
             <!-- Menu Section -->
             <div class="col-md-8">
-              {% if coffee_shop.menu_images.exists %}
-              <div class="image-galleries">
+              <div class="menu-link">
                 <h2>Menu</h2>
-                <div class="gallery-images">
-                  {% for image in coffee_shop.menu_images.all %}
-                  <a href="{{ image.image.url }}" target="_blank">
-                    <img src="{{ image.image.url }}" alt="Menu image" class="img-fluid" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px" />
-                  </a>
-                  {% endfor %}
+                <div class="menu_link-buttons">
+                  <a href="{{ coffee_shop.menu_link }}" target="_blank" class="btn btn-primary btn-block">Lihat Menu</a>
                 </div>
               </div>
-              {% else %} {% endif %}
             </div>
             <!-- End Menu Section -->
 
@@ -225,12 +211,13 @@
             <!-- End Tahun Berdiri -->
           </div>
         </div>
+        <!-- End Data Section -->
 
         <!-- Tautan Berbagi -->
         <div class="card-body">
-          <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success"> Bagikan ke WhatsApp </a>
-          <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary"> Bagikan ke Facebook </a>
-          <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info"> Bagikan ke Twitter </a>
+          <a href="whatsapp://send?text=Lihat Tempat Ngopi ini di *Tengo* yuk {{ request.build_absolute_uri }}" class="btn btn-success">Bagikan ke WhatsApp</a>
+          <a href="https://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="btn btn-primary">Bagikan ke Facebook</a>
+          <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" class="btn btn-info">Bagikan ke Twitter</a>
         </div>
         <!-- End Tautan Berbagi -->
       </div>

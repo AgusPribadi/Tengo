@@ -11,21 +11,20 @@ class CoffeeShopImageInline(admin.TabularInline):
     model = CoffeeShopImage
     extra = 1
 
-class MenuImageInline(admin.TabularInline):
-    model = MenuImage
-    extra = 1
-
 class CoffeeShopAdmin(admin.ModelAdmin):
     search_fields = ['nama', 'alamat']
-    inlines = [CoffeeShopImageInline, MenuImageInline]
+    inlines = [CoffeeShopImageInline]
     actions = ['download_data_as_csv']
 
-    list_display = ['nama', 'alamat', 'latitude', 'longitude', 'contact', 'instagram_url', 'google_maps_url', 'tahun_berdiri']
+    list_display = [
+        'nama', 'alamat', 'latitude', 'longitude', 'contact',
+        'instagram_url', 'google_maps_url', 'tahun_berdiri', 'menu_link'
+    ]
 
     fields = [
         'nama', 'alamat', 'jam_buka', 'contact', 'gallery', 'instagram_url',
-        'tiktok_url', 'google_maps_url', 'menu_images', 'latitude', 'longitude',
-        'lokasi', 'fasilitas', 'metode_pembayaran', 'tahun_berdiri'
+        'tiktok_url', 'google_maps_url', 'latitude', 'longitude',
+        'lokasi', 'fasilitas', 'metode_pembayaran', 'tahun_berdiri', 'menu_link'
     ]
 
     def download_data_as_csv(self, request, queryset):
@@ -36,7 +35,7 @@ class CoffeeShopAdmin(admin.ModelAdmin):
         writer.writerow([
             'Nomor', 'Nama', 'Alamat', 'Jam Buka', 'Kontak', 
             'Instagram URL', 'TikTok URL', 'Google Maps URL', 
-            'Menu', 'Latitude', 'Longitude', 'Metode Pembayaran', 'tahun_berdiri'
+            'Latitude', 'Longitude', 'Metode Pembayaran', 'Tahun Berdiri', 'Menu Link'
         ])
 
         for index, coffee_shop in enumerate(queryset, start=1):
@@ -50,11 +49,11 @@ class CoffeeShopAdmin(admin.ModelAdmin):
                 coffee_shop.instagram_url, 
                 coffee_shop.tiktok_url, 
                 coffee_shop.google_maps_url,
-                coffee_shop.menu_images,
                 coffee_shop.latitude,
                 coffee_shop.longitude,
                 metode_pembayaran,
-                tahun_berdiri
+                coffee_shop.tahun_berdiri,
+                coffee_shop.menu_link
             ])
 
         return response
@@ -82,5 +81,3 @@ admin.site.register(Recommendation)
 admin.site.register(Fasilitas, FasilitasAdmin)
 admin.site.register(Subscription, SubscriptionAdmin)
 admin.site.register(VisitStatus, VisitStatusAdmin)
-admin.site.register(MenuImage)
-admin.site.register(PaymentMethod, PaymentMethodAdmin)

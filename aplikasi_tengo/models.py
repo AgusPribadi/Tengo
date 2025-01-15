@@ -18,7 +18,7 @@ class CoffeeShop(models.Model):
     alamat = models.TextField()
     jam_buka = models.CharField(max_length=50)
     contact = models.CharField(max_length=50)
-    gallery = models.ImageField(upload_to='coffeeshop_gallery')
+    gallery = models.ImageField(upload_to='coffeeshop_gallery', null=True)
     instagram_url = models.URLField(max_length=200, null=True, blank=True)
     tiktok_url = models.URLField(max_length=200, null=True, blank=True)
     google_maps_url = models.URLField(blank=True, null=True)
@@ -26,10 +26,9 @@ class CoffeeShop(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     lokasi = models.ManyToManyField('Lokasi')
     fasilitas = models.ManyToManyField('Fasilitas', blank=True)
-    menu_images = models.ManyToManyField('MenuImage', blank=True, related_name='coffee_shops')
+    menu_link = models.URLField('MenuLink', blank=True)
     tahun_berdiri = models.PositiveIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
-
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
 
@@ -54,10 +53,9 @@ class CoffeeShop(models.Model):
     def __str__(self):
         return self.nama
 
-
 class MenuImage(models.Model):
     coffee_shop = models.ForeignKey(CoffeeShop, related_name='menu_images_related', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='menu_images/')
+    image_url = models.URLField(default='')  # Default nilai kosong
 
     def __str__(self):
         return f"{self.coffee_shop.nama} - Menu Image"

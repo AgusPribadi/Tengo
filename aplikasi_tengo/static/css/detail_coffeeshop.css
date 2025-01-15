@@ -78,7 +78,7 @@ body {
   transform: scale(1.05);
 }
 
-.cocok-untuk .card-title {
+.data-section .card-title {
   color: #111;
 }
 
@@ -106,7 +106,7 @@ body {
   transform: scale(1.05);
 }
 
-.cocok-untuk .col-md-4 {
+.data-section .col-md-4 {
   margin-top: 10px;
 }
 
@@ -199,7 +199,7 @@ li i {
     flex: 1;
   }
 
-  .cocok-untuk .col-md-8:nth-child(3) {
+  .data-section .col-md-8:nth-child(3) {
     width: 100%;
     margin-top: 20px;
     text-align: center;
