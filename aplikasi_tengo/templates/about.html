@@ -1,55 +1,50 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <!-- SEO Meta Tags -->
     <meta name="description" content="Tengo adalah platform rekomendasi tempat ngopi di Pontianak. Temukan tempat favorit untuk nugas dan WFA di dekat kamu." />
     <meta name="keywords" content="tempat ngopi, coffee shop, Pontianak, nugas, WFA, Tengo" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Tengo Team" />
+    <!-- End SEO Meta Tags -->
 
-    <!-- Mobile -->
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title -->
-    <title>Tentang Kami</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/tengo-favicon.ico' %}" type="image/x-icon" />
 
+    <!-- Title -->
+    <title>Tentang Kami | Tengo</title>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-
-    <!-- Font Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/about.css' %}" />
   </head>
   <body>
     {% include 'navbar.html' %}
-    <div class="container">
-      <h1 class="my-4">Tentang Kami</h1>
-      <p class="lead">
-        Tengo adalah platform rekomendasi tempat ngopi, nugas, skripsian dan WFA terbaikmu. Kami menyediakan informasi tentang berbagai Tempat Ngopi di seluruh kota Pontianak saat ini, sehingga Kamu dapat menemukan tempat ngopi favorit kamu
-        dengan mudah.
+
+    <div class="container text-white py-5">
+      <h1 class="bold-text text-center">Tentang Kami</h1>
+      <p class="lead mt-4 text-left">
+        Tengo adalah teman setiamu dalam mencari tempat ngopi yang pas buat nugas, skripsian, atau WFA di Pontianak. Kami bantu kamu menemukan tempat ngopi terbaik tanpa ribet, langsung dari rekomendasi terpercaya.
       </p>
-      <p class="lead">
-        Tengo ialah platform non-profit yang punya misi membantu kawan-kawan khususnya di Kota Pontianak untuk menemukan tempat ngopi dengan mudah, banyaknya Tempat Ngopi yang bertebaran saat ini ada baiknya kami mendesain platform yang di
-        mana informasinya dapat ditemukan dengan mudah.
-      </p>
-      <p class="lead">Seluruh aset gambar dan informasi kami data sendiri yang tertera pada internet dan social media masing-masing Tempat Ngopi.</p>
-      <p class="lead">Website Tengo masih dalam tahap pengembangan, untuk info bug, error, saran dan pertanyaan dapat menghubungi pengembang.</p>
-      <a href="https://www.instagram.com/tengo.id/" target="_blank" class="btn btn-success">Pengembang</a>
-      <br />
-      <br />
+      <p class="lead text-left">Tengo ini platform non-profit, murni buat bantu kawan-kawan pencari kopi di Pontianak. Karena tempat ngopi makin banyak, kami bikin cara yang lebih gampang buat nemuin yang paling cocok buatmu.</p>
+      <p class="lead text-left">Semua informasi dan gambar kami kumpulkan sendiri dari internet dan media sosial masing-masing tempat ngopi.</p>
+      <p class="lead text-left">Website ini masih terus dikembangkan. Kalau nemu bug, error, atau punya saran seru, jangan ragu hubungi kami. Kita bikin Tengo makin keren bareng-bareng! 🚀☕</p>
     </div>
 
-    <!-- Link ke Bootstrap JavaScript dan jQuery -->
+    <!-- Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
